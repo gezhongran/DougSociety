@@ -25,3 +25,7 @@
     - Superlib.js：支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试。
 ---
 - changelog:2020.08.14 创建仓库，添加资源
+
+欢迎关注道格学社公众号：
+
+![欢迎关注公众号](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghqq4mtus1j3076076wey.jpg)
