@@ -1,4 +1,4 @@
-# 道格学社知识管理训练营（Knowledge management）官方仓库
+# 道格学社官方仓库-知识管理训练营（Knowledge management）
 
 感谢同学们的群策群力，因为你们的贡献，Zotero在中文世界应用会大为不同。中文世界情报与信息收集也会发生质变。
 
