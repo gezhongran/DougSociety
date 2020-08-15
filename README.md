@@ -10,10 +10,10 @@
 
 - 致谢榜：
 
-1. 01期学员Felix，贡献：douban.js，BiliBili.js，BiliBili Bangumi.js
-2. 02期学员018，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js
+1. 01期学员[Felix](https://github.com/xuwd/translators)，贡献：douban.js，BiliBili.js，BiliBili Bangumi.js
+2. 02期学员[018](https://github.com/018/translators)，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js，全国图书馆参考咨询联盟.js
 
-- 资源说明：
+- 资源说明：	
 
   - Tampermonkey脚本：
     - [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。
