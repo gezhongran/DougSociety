@@ -16,7 +16,8 @@
 - 资源说明：
 
   - Tampermonkey脚本：
-    - [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):豆瓣页面显示中图法，方便图书分类
+    - [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。
+    - [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-):下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。
   - Translators更新：
     - douban.js：支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，丰富元数据抓取维度，修复Bug若干
     - BiliBili.js：支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
