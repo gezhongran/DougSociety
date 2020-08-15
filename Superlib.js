@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2020-08-12 08:36:07"
+	"lastUpdated": "2020-08-15 13:23:58"
 }
 
 /*
@@ -120,7 +120,7 @@ function detectWeb(doc, url) {
 	return false;
 }
 
-function getSearchResults(doc, checkOnly) {
+function getSearchResults(doc, checkOnly, itemInfo) {
 	var items = {};
 	var found = false;
 	var rows = doc.querySelectorAll('.book1');
@@ -145,7 +145,14 @@ function getSearchResults(doc, checkOnly) {
 			items[''] = '【提醒：存在失败的可能，请隔几个小时后试试，或单个抓取。】';
 		}
 		
-		Z.debug(title);
+		if (itemInfo) {
+			var download = row.querySelector('.get a');
+			if (download && download.textContent == 'PDF下载') {
+				itemInfo[url] = {
+					pdfurl: download.href
+				};
+			}
+		}
 		if (title.startsWith('《') && title.endsWith('》')) {
 			title = title.replace(/《|》/g, '');
 		}
@@ -157,12 +164,13 @@ function getSearchResults(doc, checkOnly) {
 
 function doWeb(doc, url) {
 	if (detectWeb(doc, url) == "multiple") {
-		Zotero.selectItems(getSearchResults(doc, false), function (items) {
+		var itemInfo = {};
+		Zotero.selectItems(getSearchResults(doc, false, itemInfo), function (items) {
 			if (items) {
 				if (items['']) {
 					delete items[''];
 				}
-				if (items) ZU.processDocuments(Object.keys(items), scrape);
+				scrapeItem(Object.keys(items), itemInfo);
 			}
 		});
 	} else {
@@ -170,7 +178,13 @@ function doWeb(doc, url) {
 	}
 }
 
-function scrape(doc, url) {
+function scrapeItem(items, itemInfo) {
+	ZU.processDocuments(items, function (doc, url) {
+		scrape(doc, url, itemInfo[url] ? itemInfo[url].pdfurl : null);
+	});
+}
+
+function scrape(doc, url, pdfurl) {
 	if (!url || url.length <= 0) {
 		return;
 	}
@@ -390,39 +404,22 @@ function scrape(doc, url) {
 		item.title = item.title.replace(/《|》/g, '');
 	}
 	
-	try {
-		var download = doc.querySelector('.boxHd+div.link a');
-		if (download && download.textContent == '文章下载') {
-			Z.debug('pdf >>> ' + download.href);
-			//item.attachments.push({
-			//	title: 'PDF Download',
-			//	url: download.href,
-			//	linkMode: 'linked_url'
-			//});
-			ZU.HTTP.processDocuments([download.href], function(doc1) {
-				// Z.debug('url1 >>>' + url1);
-				Z.debug('doc1 >>>' + doc1);
-				var a = doc1.querySelector('.down_bnt');
-				if (a) {
-					// Z.debug(doc1.innerHTML);
-					// Z.debug(a.href);
-					var translator = Zotero.loadTranslator("import");
-					translator.setTranslator("33553736-4ea9-4b1a-b1e1-d43b2a918156");
-					translator.setDocument(doc1);
-					translator.setHandler("itemDone", function(obj, item) {
-						item.attachments.push({
-							url: a.href,
-							title: 'Full Text PDF',
-							mimeType: 'application/pdf'
-						});
-						item.complete();
-					});
-					translator.translate();
-				}
+	// 如果抓取失败，请配合油猴脚本使用：https://greasyfork.org/zh-CN/scripts/408790
+	if (pdfurl) {
+		item.attachments.push({
+			url: pdfurl,
+			title: 'Full Text PDF',
+			mimeType: 'application/pdf'
+		});
+	} else {
+		var download = doc.querySelector('.link a');
+		if (download && download.textContent == 'PDF下载') {
+			item.attachments.push({
+				url: download.href,
+				title: 'Full Text PDF',
+				mimeType: 'application/pdf'
 			});
 		}
-	} catch (x) {
-		Zotero.debug("Caught exception " + x);
 	}
 	
 	item.complete();
