@@ -40,6 +40,7 @@
 | 关键词       | [术语在线—权威的术语知识服务平台](http://termonline.cn/index.htm) |
 | 关键词       | [中国科学技术信息研究所--国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home) |
 | 关键词       | [关键词挖掘工具，长尾关键词挖掘，网站关键词查询 - 5118站长工具](https://www.5118.com/) |
+| 关键词       | [微词云](https://www.weiciyun.com/)                          |
 | 金句名言     | [维基语录，自由的名人名言录，金句](https://zh.m.wikiquote.org/) |
 | 论文         | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
 | 论文         | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
@@ -64,7 +65,7 @@
 | 无敌的存在   | [互联网时光机](https://web.archive.org/)                     |
 ---
 - changelog:2020.08.14 创建仓库，添加初始资源
-- changelog:2020.08.15 添加油猴superlib脚本，添加学员git仓库连接，彩蛋优质信息源整理
+- changelog:2020.08.15 添加油猴superlib脚本，添加学员git仓库连接，彩蛋优质信息源整理，添加微词云
 
 欢迎关注道格学社公众号：
 
