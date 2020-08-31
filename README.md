@@ -1,4 +1,4 @@
-## 道格学社官方仓库-知识管理训练营（Knowledge management）
+## 道格学社官方仓库-[知识管理训练营](https://mp.weixin.qq.com/s/2VzC1RMzwLij4NMaJm3EoQ)（Knowledge management）
 
 感谢每一位同学们的贡献！因为你们，Zotero会在中文世界会爆发出难以估量的潜力。我们每位学员知识与情报管理方式、智识生产的效率会发生天翻地覆的变化。
 
@@ -12,6 +12,7 @@
 
 1. 01期学员[Felix](https://github.com/xuwd/translators)，贡献：douban.js，BiliBili.js，BiliBili Bangumi.js
 2. 02期学员[018](https://github.com/018/translators)，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js，全国图书馆参考咨询联盟.js
+3. 03期学员五弦琴，贡献：卡片在线制作工具
 
 - **课程核心资源列表：**	
 
@@ -26,6 +27,8 @@
   - BiliBili Bangumi.js：支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
   - Ncpssd.js：支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量
   - Superlib.js：支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试。
+  
+3. 在线卡片制作工具：[卡片在线制作工具](http://earth.ticktechtalk.cn/ind#/)，**目前只支持「金句卡」与「反认知卡」**
 - **彩蛋1豆列清单：**
 
 | 以下豆列均由道格老师使用zotero进行图情分析和整理             |
@@ -51,9 +54,9 @@
 | 关键词     | [XLore](https://xlore.org/)                                  |
 | 关键词     | [术语在线—权威的术语知识服务平台](http://termonline.cn/index.htm) |
 | 关键词     | [中国科学技术信息研究所--国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home) |
-| 关键词     | [关键词挖掘工具，长尾关键词挖掘，网站关键词查询 - 5118站长工具](https://www.5118.com/) |
 | 关键词     | [微词云](https://www.weiciyun.com/)                          |
 | 金句名言   | [维基语录，自由的名人名言录，金句](https://zh.m.wikiquote.org/) |
+| 金句名言   | [名言通](https://www.mingyantong.com/)                       |
 | 论文       | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
 | 论文       | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
 | 论文       | [Sci-Hub: removing barriers in the way of science](https://sci-hub.se/) |
@@ -66,7 +69,10 @@
 | 设计资源   | [花瓣网](https://huaban.com/)                                |
 | 图书       | [全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)     |
 | 图书       | [WorldCat.org:世界上最庞大的图书馆目录](https://www.worldcat.org/) |
-| 网盘搜索   | [凌风云搜索是互联网最专业的免费资源搜索引擎 ](https://www.lingfengyun.com/) |
+| 报告       | [199IT中文互联网数据咨询](http://www.199it.com/)             |
+| 报告       | [艾瑞网](https://www.iresearch.cn/)                          |
+| 报告       | [艾媒网](https://www.iimedia.cn/)                            |
+| 网盘搜索   | [凌风云 ](https://www.lingfengyun.com/)                      |
 | 网盘搜索   | [云盘精灵](https://www.yunpanjingling.com/)                  |
 | 网页脚本   | [万能命令-快捷寻找和直达你想要的各类工具](https://wanneng.run/cn/) |
 | 知识图谱   | [Academic Map & Academic Search - Acemap](https://www.acemap.info/) |
@@ -80,9 +86,11 @@
 | 图书馆     | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
 | 无敌的存在 | [互联网时光机](https://web.archive.org/)                     |
 ---
-- changelog:2020.08.14 创建仓库，添加初始资源
-- changelog:2020.08.15 添加油猴superlib脚本，添加学员git仓库连接，彩蛋优质信息源整理，添加微词云
-- changelog:2020.08.24 添加优质信息源-国研网、中经网、国家图书馆、职级对标。新增豆列清单
+### changelog:
+- 2020.08.14 创建仓库，添加初始资源
+- 2020.08.15 添加油猴superlib脚本，添加学员git仓库连接，彩蛋优质信息源整理，添加微词云
+- 2020.08.24 添加优质信息源-国研网、中经网、国家图书馆、职级对标。新增豆列清单
+- 2020.08.31 添加在线卡片制作工具
 
 欢迎关注道格学社公众号：
 
