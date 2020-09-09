@@ -22,7 +22,7 @@
   - [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-):下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。
   
 2. Translators更新：
-  - douban.js：支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，丰富元数据抓取维度，支持抓取CLC需要配合插件，修复Bug若干。
+  - douban.js：支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等
   - BiliBili.js：支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
   - BiliBili Bangumi.js：支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
   - Ncpssd.js：支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量
@@ -94,7 +94,7 @@
 - 2020.08.31 添加在线卡片制作工具
 - 2020.09.09 
   - 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。
-  - 更新douban.js:1.「存档位置」可以抓取中图法分类，需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」2.可以抓取目录，需要手动开启。开启方法，如下图。成功开启后豆瓣有目录可以抓取，目录会以「笔记」形式存在。如果要关闭抓取目录，在第3步点击translators.douban-点击reset，即可。
+  - 更新douban.js:1.「存档位置」显示中图法分类**（如有）**，需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」。2.可以抓取目录，需要**手动开启**。开启方法，在zotero connetor-高级，然后如下图操作。成功开启后豆瓣目录信息可以抓取**（如有）**，目录会以「笔记」形式存在。如果要关闭抓取目录，在第3步点击translators.douban-点击reset，即可。
   ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
   - 更新superlib.js:「存档位置」可以抓取中图法分类。
 
