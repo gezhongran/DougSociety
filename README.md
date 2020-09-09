@@ -29,7 +29,7 @@
   - Superlib.js：支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试。
   - cnki.js：适配知网改版页面，合并中文姓、名为创建者
   
-3. 在线卡片制作工具：[卡片在线制作工具](http://earth.ticktechtalk.cn/ind#/)，**目前只支持「金句卡」与「反认知卡」**
+3. 在线卡片制作工具：[卡片在线制作工具](http://earth.ticktechtalk.cn/ind#/)，**目前只支持「金句卡」与「反认知卡」**。
 - **彩蛋1豆列清单：**
 
 | 以下豆列均由道格老师使用zotero进行图情分析和整理             |
@@ -95,8 +95,7 @@
 - 2020.09.09 
   - 添加CNKI.js：1.适配知网改版后的页面2.合并中文作者姓与名，在创建者中显示。
   - 更新douban.js:1.「存档位置」可以抓取中图法分类，需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」2.可以抓取目录需要手动开启，开启成功后有目录的页面，目录会以「笔记」形式存在。开启方法，如下图。
-  - 123
-  - ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
+  ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
   - 更新superlib.js:「存档位置」可以抓取中图法分类。
 
 欢迎关注道格学社公众号：
