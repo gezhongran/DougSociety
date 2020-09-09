@@ -11,7 +11,7 @@
 - **致谢榜：**
 
 1. 01期学员[Felix](https://github.com/xuwd/translators)，贡献：douban.js，BiliBili.js，BiliBili Bangumi.js
-2. 02期学员[018](https://github.com/018/translators)，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js，全国图书馆参考咨询联盟.js
+2. 02期学员[018](https://github.com/018/translators)，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js，全国图书馆参考咨询联盟.js，cnki.js
 3. 03期学员五弦琴，贡献：卡片在线制作工具
 
 - **课程核心资源列表：**	
@@ -91,6 +91,7 @@
 - 2020.08.15 添加油猴superlib脚本，添加学员git仓库连接，彩蛋优质信息源整理，添加微词云
 - 2020.08.24 添加优质信息源-国研网、中经网、国家图书馆、职级对标。新增豆列清单
 - 2020.08.31 添加在线卡片制作工具
+- 2020.09.09 添加CNKI.js：1.适配知网改版后的页面2.合并中文作者姓与名，在创建者中显示
 
 欢迎关注道格学社公众号：
 
