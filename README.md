@@ -44,7 +44,7 @@
 
 - **彩蛋2优质信源清单：**
 
-| Author     | Title                                                        |
+| 类别       | 网址                                                         |
 | ---------- | ------------------------------------------------------------ |
 | 搜索引擎   | [Magi](https://magi.com/)                                    |
 | 程序性知识 | [wikiHow: How-to instructions you can trust.](https://www.wikihow.com/Main-Page) |
@@ -77,11 +77,6 @@
 | 网盘搜索   | [云盘精灵](https://www.yunpanjingling.com/)                  |
 | 网页脚本   | [万能命令-快捷寻找和直达你想要的各类工具](https://wanneng.run/cn/) |
 | 知识图谱   | [Academic Map & Academic Search - Acemap](https://www.acemap.info/) |
-| 职业信息   | [职友集-薪酬查询](https://www.jobui.com/)                    |
-| 职业信息   | [看准网-薪酬查询](https://www.kanzhun.com/)                  |
-| 职业信息   | [职级对标-大厂](http://duibiao.info/)                        |
-| 职业信息   | [O*NET OnLine-岗位说明](https://www.onetonline.org/)         |
-| 职业信息   | [职业全能培训库](https://zyk.bjadks.com/)                    |
 | 图书馆     | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
 | 图书馆     | [浙江省图书馆](https://www.zjlib.cn/)                        |
 | 图书馆     | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
