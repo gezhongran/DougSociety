@@ -94,8 +94,11 @@
 - 2020.08.31 添加在线卡片制作工具
 - 2020.09.09 
   - 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。
-  - 更新douban.js:1.「存档位置」显示中图法分类**（如有）**，需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」。2.可以抓取目录，需要**手动开启**。开启方法，在zotero connetor-高级，然后如下图操作。成功开启后豆瓣目录信息可以抓取**（如有）**，目录会以「笔记」形式存在。如果要关闭抓取目录，在第3步点击translators.douban-点击reset，即可。
-  ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
+  - 更新douban.js:
+    - 1.元数据的「存档位置」可以抓取中图法分类**（如有）**，抓取需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」。
+    - 2.可以**手动**开启抓取「图书目录」功能。开启步骤：浏览器-zotero connetor右键单击-选项-高级，然后如下图操作。成功开启后，豆瓣目录信息（如有）会以「笔记」形式挂在条目下面。
+    - 3.如果要关闭抓取目录，在第3步点击translators.douban-点击reset，即可。
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
   - 更新superlib.js:「存档位置」可以抓取中图法分类。
 
 欢迎关注道格学社公众号：
