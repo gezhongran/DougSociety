@@ -19,14 +19,20 @@
 1. Tampermonkey脚本：
   
   1.1  [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。
+  
   1.2 [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-):下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。
   
 2. Translators更新：
   2.1 douban.js：支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等
+  
   2.2 BiliBili.js：支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
+  
   2.3 BiliBili Bangumi.js：支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长
+  
   2.4 Ncpssd.js：支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量
+  
   2.5 Superlib.js：支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试。
+  
   2.6 cnki.js：适配知网改版页面，合并中文姓、名为创建者
   
 3. 在线卡片制作工具：[卡片在线制作工具](http://earth.ticktechtalk.cn/ind#/)，**目前只支持「金句卡」与「反认知卡」**。
