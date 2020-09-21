@@ -8,7 +8,7 @@
 
 祝Zotero早日合并诸位的代码。
 
-- **致谢榜：**
+- **致谢：**
 
 1. 01期学员[Felix](https://github.com/xuwd/translators)，贡献：douban.js，BiliBili.js，BiliBili Bangumi.js
 2. 02期学员[018](https://github.com/018/translators)，贡献：douban.js，Ncpssd.js，Superlib.js，豆瓣中图分类法.js，全国图书馆参考咨询联盟.js，cnki.js
@@ -18,9 +18,9 @@
 
 1. Tampermonkey脚本：
   
-  1.1  [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。
+    1.1  [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682):如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。
   
-  1.2 [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-):下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。
+    1.2 [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-):下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。
   
 2. Translators更新：
   2.1 douban.js：支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等
