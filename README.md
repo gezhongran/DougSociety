@@ -14,7 +14,7 @@
 
 1. **Tampermonkey脚本**
 
-| 序号 | <span style="white-space:nowrap;">下载地址&nbsp;&nbsp;&nbsp;&nbsp;</span> | <span style="white-space:nowrap;">贡献者&nbsp;&nbsp;&nbsp;&nbsp;</span>  | 备注 |
+| 序号 |<span style="white-space:nowrap;">脚本下载地址&nbsp;&nbsp;&nbsp;&nbsp;</span> | <span style="white-space:nowrap;">贡献者&nbsp;&nbsp;&nbsp;</span>  | 备注 |
 | ---- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
 | 1    | [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682) | [018](https://github.com/018/translators) | 如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。 |
 | 2    | [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
@@ -110,8 +110,8 @@
 - 2020.09.09 
   - 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。
   - 更新douban.js:
-    - 1.元数据的「存档位置」可以抓取中图法分类**（如有）**，抓取需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」。
-    - 2.可以**手动**开启抓取「图书目录」功能。开启步骤：浏览器-zotero connetor右键单击-选项-高级，然后如下图操作。成功开启后，豆瓣目录信息（如有）会以「笔记」形式挂在条目下面。
+    - 1.元数据的「存档位置」可以抓取中图法分类（如有），抓取需要配合油猴插件「[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)」。
+    - 2.可以手动开启抓取「图书目录」功能。开启步骤：浏览器-zotero connetor右键单击-选项-高级，然后如下图操作。成功开启后，豆瓣目录信息（如有）会以「笔记」形式挂在条目下面。
     - 3.如果要关闭抓取目录，在第3步点击translators.douban-点击reset，即可。
 ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gikq1ccc1xj30ro0q6afb.jpg)
   - 更新superlib.js:「存档位置」可以抓取中图法分类。
