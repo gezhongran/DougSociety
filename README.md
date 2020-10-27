@@ -20,7 +20,8 @@
 | 2    | [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
 
 2. **Translators**
-| 序号 | Translator名称 | 贡献者| 备注 |
+
+| 序号 | Translator名称 | 贡献者 | 备注 |
 | ---- | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1    | douban.js           | [Felix](https://github.com/xuwd/translators)/[018](https://github.com/018/translators) | 支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等 |
 | 2    | BiliBili.js         | [Felix](https://github.com/xuwd/translators)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
