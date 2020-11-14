@@ -23,18 +23,19 @@
 
 | 序号 |<span style="white-space:nowrap;">Translator&nbsp;&nbsp;&nbsp;&nbsp;</span> | <span style="white-space:nowrap;">贡献者&nbsp;&nbsp;</span> | 备注 |
 | ---- | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | douban.js           | [Felix](https://github.com/xuwd/translators)/[018](https://github.com/018/translators) | 支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等 |
-| 2    | BiliBili.js         | [Felix](https://github.com/xuwd/translators)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
-| 3    | BiliBili Bangumi.js | [Felix](https://github.com/xuwd/translators)                 | 支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
-| 4    | Ncpssd.js           | [018](https://github.com/018/translators)                    | 支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量 |
-| 5    | Superlib.js         | [018](https://github.com/018/translators)                    | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
-| 6    | cnki.js             | [018](https://github.com/018/translators)                    | 适配知网改版页面，合并中文姓、名为创建者                     |
+| 1    | douban.js           | [Felix](https://github.com/xuwd)/[018](https://github.com/018) | 支持「[豆瓣](https://www.douban.com/)」标签下的图书批量抓取，图书评分/评价人数抓取，抓取框显示评分/评价人数（√ ），豆瓣电影单抓和批量，支持短标题，支持抓取CLC分类（需要配合油猴）等 |
+| 2    | BiliBili.js         | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
+| 3    | BiliBili Bangumi.js | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
+| 4    | Ncpssd.js           | [018](https://github.com/018) | 支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量 |
+| 5    | Superlib.js         | [[018](https://github.com/018)](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
+| 6    | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者                     |
 
 3. **Zotero插件**
 
 | 序号 | 插件下载地址 |<span style="white-space:nowrap;">贡献者&nbsp;&nbsp;&nbsp;&nbsp;</span> | 备注                                                         |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | [zotupdate](https://github.com/018/zotupdate)                | [018](https://github.com/018/translators)                    | 1、更新：更新书籍的中图法及豆瓣评分(如果来源于douban)；2：拉目录：(如果来源于douban)拉目录作为笔记。3：下载试读：尝试下载目录、序、试读的正文等。4：下载电子书：尝试下载电子书。 |
+| 1    | [zotupdate](https://github.com/018/zotupdate)                | [018](https://github.com/018)                    | 1、更新：更新书籍的中图法及豆瓣评分(如果来源于douban)；<br />2：拉目录：(如果来源于douban)拉目录作为笔记。<br />3：下载试读：尝试下载目录、序、试读的正文等。<br />4：下载电子书：尝试下载电子书。 |
+| 2 | [zotcard](https://github.com/018/zotcard) | [018](https://github.com/018) | zotcard是Zotero的一个插件，它可以帮助你快速写卡片，提供了如概念卡、人物卡、反常识卡等等卡片模版，只需一步即可直接写卡。还提供复制多张卡片及批量打开浮动编辑窗口，方便拼卡成文。 |
 
 4. **在线卡片制作工具**
 
