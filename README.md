@@ -111,6 +111,8 @@
 
 ### changelog:
 
+- 2020.11.13 更新zotero插件zotcard资源
+
 - 2020.10.27 更新zotero插件zotupdate资源
 
 - 2020.09.09 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。更新douban.js:更新superlib.js:「存档位置」可以抓取中图法分类。
