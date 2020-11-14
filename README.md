@@ -71,37 +71,38 @@
 | 程序性知识 | [wikiHow: How-to instructions you can trust.](https://www.wikihow.com/Main-Page) |
 | 导航网站   | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
 | 导航网站   | [Sites Like - Find and share similar websites on siteslike](https://www.siteslike.com/) |
-| 公众号     | [瓦斯阅读（RSS）](https://qnmlgb.tech/)                      |
+| 公众号     | [瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)                  |
 | 公众号     | [新榜](https://www.newrank.cn/)                              |
 | 关键词     | [XLore](https://xlore.org/)                                  |
-| 关键词     | [术语在线—权威的术语知识服务平台](http://termonline.cn/index.htm) |
-| 关键词     | [中国科学技术信息研究所--国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home) |
+| 关键词     | [术语在线](http://termonline.cn/index.htm)                   |
+| 关键词     | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home) |
 | 关键词     | [微词云](https://www.weiciyun.com/)                          |
-| 金句名言   | [维基语录，自由的名人名言录，金句](https://zh.m.wikiquote.org/) |
+| 金句名言   | [维基语录](https://zh.m.wikiquote.org/)                      |
 | 金句名言   | [名言通](https://www.mingyantong.com/)                       |
 | 论文       | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
 | 论文       | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
-| 论文       | [Sci-Hub: removing barriers in the way of science](https://sci-hub.se/) |
+| 论文       | [Sci-Hub](https://sci-hub.se/)                               |
 | 论文       | [You are Crossref（DOI）](https://www.crossref.org/)         |
-| 免费影视   | [电影狗-影视垂直搜索引擎 免费电影网站导航](http://www.dianyinggou.com/) |
-| 免费影视   | [茶杯狐 Cupfox-垂直电影搜索](https://www.cupfox.com/)        |
+| 免费影视   | [电影狗](http://www.dianyinggou.com/)                        |
+| 免费影视   | [茶杯狐 ](https://www.cupfox.com/)                           |
 | 数据源     | [Worldometer - real time world statistics（全球实时数据）](https://www.worldometers.info/) |
 | 数据源     | [国务院发展研究中心信息网（国研网）](http://www.drcnet.com.cn/www/int/) |
 | 数据源     | [中经网统计数据库](https://db.cei.cn/)                       |
 | 设计资源   | [花瓣网](https://huaban.com/)                                |
 | 图书       | [全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)     |
-| 图书       | [WorldCat.org:世界上最庞大的图书馆目录](https://www.worldcat.org/) |
+| 图书       | [WorldCat.org:世界上最大的图书馆目录](https://www.worldcat.org/) |
 | 报告       | [199IT中文互联网数据咨询](http://www.199it.com/)             |
 | 报告       | [艾瑞网](https://www.iresearch.cn/)                          |
 | 报告       | [艾媒网](https://www.iimedia.cn/)                            |
 | 网盘搜索   | [凌风云 ](https://www.lingfengyun.com/)                      |
 | 网盘搜索   | [云盘精灵](https://www.yunpanjingling.com/)                  |
-| 网页脚本   | [万能命令-快捷寻找和直达你想要的各类工具](https://wanneng.run/cn/) |
-| 知识图谱   | [Academic Map & Academic Search - Acemap](https://www.acemap.info/) |
+| 网页脚本   | [万能命令](https://wanneng.run/cn/)                          |
+| 知识图谱   | [Acemap](https://www.acemap.info/)                           |
 | 图书馆     | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
 | 图书馆     | [浙江省图书馆](https://www.zjlib.cn/)                        |
 | 图书馆     | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
 | 无敌的存在 | [互联网时光机](https://web.archive.org/)                     |
+| 投资       | [SEC Form 13F](https://whalewisdom.com/)                     |
 ---
 **欢迎关注公众号：**
 
