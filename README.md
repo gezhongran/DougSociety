@@ -27,7 +27,7 @@
 | 2    | BiliBili.js         | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
 | 3    | BiliBili Bangumi.js | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」纪录片视频单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
 | 4    | Ncpssd.js           | [018](https://github.com/018) | 支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量 |
-| 5    | Superlib.js         | [[018](https://github.com/018)](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
+| 5    | Superlib.js         | [018](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
 | 6    | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者                     |
 
 3. **Zotero插件**
