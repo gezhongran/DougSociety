@@ -74,6 +74,7 @@
 | RSS        | [公众号-瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)           |
 | RSS        | [公众号-WeRSS](https://werss.app/)                           |
 | RSS        | [Feed43](https://feed43.com/)                                |
+| RSS        | [RSSHUB](https://docs.rsshub.app/)                           |
 | 公众号     | [新榜](https://www.newrank.cn/)                              |
 | 关键词     | [XLore](https://xlore.org/)                                  |
 | 关键词     | [术语在线](http://termonline.cn/index.htm)                   |
