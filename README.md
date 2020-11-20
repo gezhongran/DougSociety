@@ -71,7 +71,9 @@
 | 程序性知识 | [wikiHow: How-to instructions you can trust.](https://www.wikihow.com/Main-Page) |
 | 导航网站   | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
 | 导航网站   | [Sites Like - Find and share similar websites on siteslike](https://www.siteslike.com/) |
-| 公众号     | [瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)                  |
+| RSS        | [公众号-瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)           |
+| RSS        | [公众号-WeRSS](https://werss.app/)                           |
+| RSS        | [Feed43](https://feed43.com/)                                |
 | 公众号     | [新榜](https://www.newrank.cn/)                              |
 | 关键词     | [XLore](https://xlore.org/)                                  |
 | 关键词     | [术语在线](http://termonline.cn/index.htm)                   |
