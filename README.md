@@ -1,6 +1,6 @@
-## 道格学社官方仓库-[知识管理训练营](https://mp.weixin.qq.com/s/2VzC1RMzwLij4NMaJm3EoQ)（Knowledge management）
+## 道格学社官方仓库
 
-感谢每一位同学们的贡献！因为你们，Zotero会在中文世界会爆发出难以估量的潜力。我们每位学员知识与情报管理方式、智识生产的效率会发生天翻地覆的变化。
+[知识管理训练营](https://mp.weixin.qq.com/s/2VzC1RMzwLij4NMaJm3EoQ)感谢每一位同学们的贡献！因为你们，Zotero会在中文世界会爆发出难以估量的潜力。我们每位学员知识与情报管理方式、智识生产的效率会发生天翻地覆的变化。
 
 > 知识的岛屿越大，无知的海岸线越长
 
