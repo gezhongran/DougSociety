@@ -115,6 +115,8 @@
 
 ### changelog:
 
+- 2020.12.19 修复Douban.js的bug：当没有「展开全部时」，摘要部分抓取作者简介
+
 - 2020.11.13 更新zotero插件zotcard资源
 
 - 2020.10.27 更新zotero插件zotupdate资源
