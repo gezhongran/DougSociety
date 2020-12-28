@@ -30,6 +30,7 @@
 | 5    | Superlib.js         | [018](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
 | 6    | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者                     |
 | 7 | Nlc.cn.js | [018](https://github.com/018) | 注册国家图书馆之后，可以下载「中国标准在线服务网」内的国家标准 |
+| 8. | Spc.org.cn.js | [018](https://github.com/018) | 抓取[中国标准在线服务网](https://www.spc.org.cn/index)元数据 |
 
 3. **Zotero插件**
 
@@ -116,7 +117,9 @@
 
 ### changelog:
 
-- 2020.12.28 添加 nlc.cn.js，可以抓取国图内标准在线网的标准
+- 2020.12.28 添加Spc.org.cn.js，可以中国标准在线服务网元数据
+
+- 2020.12.28 添加 nlc.cn.js，可以抓取国图内标准在线网的标准一级下载
 
 - 2020.12.19 修复Douban.js的bug：当没有「展开全部时」，摘要部分抓取作者简介
 
