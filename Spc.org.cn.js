@@ -1,15 +1,15 @@
 {
-	"translatorID": "33ed4133-f48b-45e4-8f00-9b8c22342c0b",
-	"label": "nlc.cn",
+	"translatorID": "3cf79f02-f4af-4392-8b84-26c2bdae2607",
+	"label": "spc.org.cn",
 	"creator": "018<lyb018@gmail.com>",
-	"target": "https?://vpn2\\.nlc\\.cn/prx",
+	"target": "https?://www\\.spc\\.org\\.cn/online",
 	"minVersion": "3.0",
 	"maxVersion": "",
 	"priority": 100,
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2020-12-28 03:38:46"
+	"lastUpdated": "2020-12-28 09:47:37"
 }
 
 /*
@@ -45,35 +45,10 @@ function detectWeb(doc, url) {
 }
 
 function doWeb(doc, url) {
-	scrape(doc, url);
+	scrapeSpc(doc, url);
 }
 
-
-
-function scrape(doc, url) {
-	if (!url || url.length <= 0) {
-		return;
-	}
-
-	var _doc = doc;
-	var code = doc.querySelector('#content > div.detail_title > table > tbody span.th_title').textContent;
-	var spcUrl = 'https://www.spc.org.cn/online/' + code.replace('/', '%252F').replace(' ', '%2520') + '/?';
-	ZU.processDocuments(spcUrl, (doc, url) => {
-		var callback = (item) => {
-			var a = _doc.querySelector('#content > div.detail_title > table > tbody > tr:nth-child(6) > td > a:nth-child(2)');
-			if (a) {
-				item.attachments.push({
-					url: a.href,
-					title: item.code,
-					mimeType: 'application/pdf'
-				});
-			}
-		};
-		scrapeSpc(doc, url, callback);
-	});
-}
-
-function scrapeSpc(doc, url, callback) {
+function scrapeSpc(doc, url) {
 	if (!url || url.length <= 0) {
 		return;
 	}
@@ -153,15 +128,86 @@ function scrapeSpc(doc, url, callback) {
 	item.abstractNote = doc.querySelector('#content > div.detailedinfo-top > div.stand-detail-description').textContent.replace(/标准简介|文前页下载| |\n|\t|/g, '')
 		.replace('读者对象：', '\n读者对象：')
 		.replace('适用范围：暂无', '');
-
-	if (callback) {
-		callback(item);
-	}
-
+	
 	item.complete();
 }
 
 /** BEGIN TEST CASES **/
 var testCases = [
+	{
+		"type": "web",
+		"url": "https://www.spc.org.cn/online/GB%252FT%252028039-2011/?",
+		"items": [
+			{
+				"itemType": "statute",
+				"nameOfAct": "中国人名汉语拼音字母拼写规则",
+				"creators": [
+					{
+						"lastName": "厉兵",
+						"creatorType": "author",
+						"fieldMode": 1
+					},
+					{
+						"lastName": "史定国",
+						"creatorType": "author",
+						"fieldMode": 1
+					},
+					{
+						"lastName": "苏培成",
+						"creatorType": "author",
+						"fieldMode": 1
+					},
+					{
+						"lastName": "李乐毅",
+						"creatorType": "author",
+						"fieldMode": 1
+					},
+					{
+						"lastName": "万锦堃",
+						"creatorType": "author",
+						"fieldMode": 1
+					}
+				],
+				"dateEnacted": "2012-02-01",
+				"abstractNote": "适用范围：本标准规定了使用汉语拼音字母拼写中国人名的规则，包括汉语人名的拼写规则和少数民族语人名的拼写规则。为了满足应用需要，同时给出了一些特殊场合的变通处理办法。本标准适用于文化教育、编辑出版、中文信息处理及其他方面的中国人名汉语拼音字母拼写。\n读者对象：文化教育、编辑出版、中文信息处理及其他方面的人员。",
+				"code": "GB/T 28039-2011",
+				"codeNumber": "A14",
+				"extra": "现行",
+				"language": "中文简体",
+				"pages": "8 页",
+				"publicLawNumber": "01.140.10",
+				"rights": "中华人民共和国国家质量监督检验检疫总局、中国国家标准化管理委员会",
+				"shortTitle": "The Chinese phonetic alphabet spelling rules for Chinese names",
+				"url": "https://www.spc.org.cn/online/GB%252FT%252028039-2011/?",
+				"attachments": [],
+				"tags": [],
+				"notes": [],
+				"seeAlso": []
+			}
+		]
+	},
+	{
+		"type": "web",
+		"url": "https://www.spc.org.cn/online/ISO%252081060-1%2520ed1.0%2520EN/",
+		"items": [
+			{
+				"itemType": "statute",
+				"nameOfAct": "Non-invasive sphygmomanometers -- Part 1: Requirements and test methods for non-automated measurement type",
+				"creators": [],
+				"dateEnacted": "2011-12-17",
+				"code": "ISO 81060-1 ed1.0 EN",
+				"extra": "现行",
+				"language": "EN",
+				"pages": "37 页",
+				"publicLawNumber": "11.040.10",
+				"rights": "ISO",
+				"url": "https://www.spc.org.cn/online/ISO%252081060-1%2520ed1.0%2520EN/",
+				"attachments": [],
+				"tags": [],
+				"notes": [],
+				"seeAlso": []
+			}
+		]
+	}
 ]
 /** END TEST CASES **/
