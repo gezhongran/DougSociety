@@ -117,6 +117,8 @@
 
 ### changelog:
 
+- 2020.01.07 合并bilibili.js与bilibili bangumi.js，原先两个translators的功能可以由一个完成
+
 - 2020.12.28 添加Spc.org.cn.js，可以中国标准在线服务网元数据
 
 - 2020.12.28 添加 nlc.cn.js，可以抓取国图内标准在线网的标准一级下载
