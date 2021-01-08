@@ -27,7 +27,7 @@
 | 2    | BiliBili.js         | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长。<br />支持「[B站](https://www.bilibili.com/)」Bangumi内纪录片单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
 | 3   | Ncpssd.js           | [018](https://github.com/018) | 支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量 |
 | 4   | Superlib.js         | [018](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
-| 5   | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者                     |
+| 5   | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者。获取知网引用数，显示在其他栏。 |
 | 6 | Nlc.cn.js | [018](https://github.com/018) | 注册国家图书馆之后，可以下载「中国标准在线服务网」内的国家标准 |
 | 7. | Spc.org.cn.js | [018](https://github.com/018) | 抓取[中国标准在线服务网](https://www.spc.org.cn/index)元数据 |
 
@@ -115,6 +115,8 @@
 ---
 
 ### changelog:
+
+- 2020.01.07 更新Cnki.js，可以获取知网的引用数。
 
 - 2020.01.07 合并bilibili.js与bilibili bangumi.js，原先两个translators的功能可以由一个bilibili.js完成
 
