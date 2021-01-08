@@ -116,7 +116,7 @@
 
 ### changelog:
 
-- 2020.01.07 更新Cnki.js，可以获取知网的引用数。
+- 2020.01.08 更新Cnki.js，可以获取知网的引用数。
 
 - 2020.01.07 合并bilibili.js与bilibili bangumi.js，原先两个translators的功能可以由一个bilibili.js完成
 
