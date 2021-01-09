@@ -17,7 +17,8 @@
 | 序号 | 脚本下载地址 | 贡献者 | 备注 |
 | ---- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
 | 1    | [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682) | [018](https://github.com/018/translators) | 如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。 |
-| 2    | [全国图书馆参考咨询联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
+| 2    | [全图联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
+| 3. | [知了](https://greasyfork.org/zh-CN/scripts/419901-%E7%9F%A5%E4%BA%86) | [018](https://github.com/018/translators) | 在知网页面跳转、直接阅读和下载「社科论文」 |
 
 2. **Translators**
 
@@ -27,8 +28,8 @@
 | 2    | BiliBili.js         | [Felix](https://github.com/xuwd)                 | 支持「[B站](https://www.bilibili.com/)」视频单抓和批量，元数据包含：摘要、集数、节目名称、时长。<br />支持「[B站](https://www.bilibili.com/)」Bangumi内纪录片单抓和批量，元数据包含：摘要、集数、节目名称、时长 |
 | 3   | Ncpssd.js           | [018](https://github.com/018) | 支持「[国家哲学社会科学文献中心](http://www.ncpssd.org/)」论文题录与PDF的单抓和批量 |
 | 4   | Superlib.js         | [018](https://github.com/018/translators) | 支持「[全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)」图书、会议论文、学位论文、期刊、专利。支持单抓和批量。批量抓取可能会失败，可以单抓或隔几个小时试试 |
-| 5   | cnki.js             | [018](https://github.com/018) | 适配知网改版页面，合并中文姓、名为创建者。获取知网引用数，显示在其他栏。 |
-| 6 | Nlc.cn.js | [018](https://github.com/018) | 注册国家图书馆之后，可以下载「中国标准在线服务网」内的国家标准 |
+| 5   | cnki.js             | [018](https://github.com/018) | 适配[中国知网](https://www.cnki.net/)改版页面，合并中文姓、名为创建者。获取知网引用数，显示在其他栏。 |
+| 6 | Nlc.cn.js | [018](https://github.com/018) | 注册[国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E6%A0%87%E5%87%86%E4%B8%93%E5%88%A9)之后，可以下载「中国标准在线服务网」内的国家标准 |
 | 7. | Spc.org.cn.js | [018](https://github.com/018) | 抓取[中国标准在线服务网](https://www.spc.org.cn/index)元数据 |
 
 3. **Zotero插件**
@@ -116,7 +117,9 @@
 
 ### changelog:
 
-- 2020.01.08 更新Cnki.js，可以获取知网的引用数。
+- 2020.01.09 添加「知了」脚本
+
+- 2020.01.08 更新Cnki.js，可以获取知网的引用数
 
 - 2020.01.07 合并bilibili.js与bilibili bangumi.js，原先两个translators的功能可以由一个bilibili.js完成
 
@@ -130,7 +133,7 @@
 
 - 2020.10.27 更新zotero插件zotupdate资源
 
-- 2020.09.09 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。更新douban.js:更新superlib.js:「存档位置」可以抓取中图法分类。
+- 2020.09.09 添加CNKI.js：1.适配知网改版后的页面 2.合并显示中文作者的「姓与名」。更新douban.js:更新superlib.js:「存档位置」可以抓取中图法分类
 
 - 2020.08.31 添加在线卡片制作工具
 
