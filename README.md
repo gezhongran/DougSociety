@@ -102,6 +102,8 @@
 | 网盘搜索   | [凌风云 ](https://www.lingfengyun.com/)                      |
 | 网盘搜索   | [云盘精灵](https://www.yunpanjingling.com/)                  |
 | 网页脚本   | [万能命令](https://wanneng.run/cn/)                          |
+| 垂直搜索   | [豆列专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:0u2qhakyyb3) |
+| 垂直搜索   | [B站专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:cajuod9wgd6) |
 | 知识图谱   | [Acemap](https://www.acemap.info/)                           |
 | 图书馆     | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
 | 图书馆     | [浙江省图书馆](https://www.zjlib.cn/)                        |
