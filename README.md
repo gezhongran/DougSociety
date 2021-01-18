@@ -18,7 +18,8 @@
 | ---- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
 | 1    | [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682) | [018](https://github.com/018/translators) | 如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。 |
 | 2    | [全图联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
-| 3. | [知了](https://greasyfork.org/zh-CN/scripts/419901-%E7%9F%A5%E4%BA%86) | [018](https://github.com/018/translators) | 在知网页面跳转、直接阅读和下载「社科论文」 |
+| 3. | [知了](https://greasyfork.org/zh-CN/scripts/419901-%E7%9F%A5%E4%BA%86) | [018](https://github.com/018/translators) | 在知网页面跳转、直接阅读和下载「社科论文」。需要注定并登陆「[国家哲学社会科学文献中心（NCPSSD）](http://www.ncpssd.org/)」以及「[国家哲学社会科学学术期刊数据库（NSSD）](www.nssd.org
+)」 |
 
 2. **Translators**
 
