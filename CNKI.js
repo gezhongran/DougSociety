@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcs",
-	"lastUpdated": "2021-01-08 06:42:52"
+	"lastUpdated": "2021-01-19 09:38:37"
 }
 
 /*
@@ -77,7 +77,7 @@ function getIDFromURL(url) {
 	var curRec = url.match(/[?&]currec=([^&#]*)/i);
 	if (!dbname || !dbname[1] || !filename || !filename[1]) return false;
 	
-	return { dbname: dbname[1], filename: filename[1], curRec: curRec[1], queryID: queryID[1], url: url };
+	return { dbname: dbname[1], filename: filename[1], curRec: (curRec && !curRec[1] ? curRec[1] : ''), queryID: (queryID && !queryID[1] ? queryID[1] : ''), url: url };
 }
 
 
@@ -154,7 +154,7 @@ function getItemsFromSearchResults(doc, url, itemInfo) {
 		// pre-released item can not get ID from URL, try to get ID from element.value
 		if (!id) {
 			var td1 = ZU.xpath(links[i], './td')[0];
-			var tmp = td1.value.split('!');
+			var tmp = td1.querySelector('input').value.split('!');
 			id = { dbname: tmp[0], filename: tmp[1], url: a.href };
 		}
 		if (!title || !id) continue;
