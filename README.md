@@ -12,15 +12,8 @@
 
 ## A 课程核心资源与工具列表
 
-1. **Tampermonkey脚本**
 
-| 序号 | 脚本下载地址 | 贡献者 | 备注 |
-| ---- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
-| 1    | [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682) | [018](https://github.com/018/translators) | 如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。 |
-| 2    | [全图联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
-| 3. | [知了](https://greasyfork.org/zh-CN/scripts/419901-%E7%9F%A5%E4%BA%86) | [018](https://github.com/018/translators) | 在知网页面跳转、直接阅读和下载「社科论文」。需要注定并登陆「[国家哲学社会科学文献中心（NCPSSD）](http://www.ncpssd.org/)」以及「[国家哲学社会科学学术期刊数据库（NSSD）](http://www.ncpssd.org/) |
-
-2. **Translators**
+1. **Translators**
 
 | 序号 |<span style="white-space:nowrap;">Translator&nbsp;&nbsp;&nbsp;&nbsp;</span> | <span style="white-space:nowrap;">贡献者&nbsp;&nbsp;</span> | 备注 |
 | ---- | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -31,6 +24,16 @@
 | 5   | cnki.js             | [018](https://github.com/018) | 适配[中国知网](https://www.cnki.net/)改版页面，合并中文姓、名为创建者。获取知网引用数，显示在其他栏。 |
 | 6 | Nlc.cn.js | [018](https://github.com/018) | 注册[国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E6%A0%87%E5%87%86%E4%B8%93%E5%88%A9)之后，可以下载「中国标准在线服务网」内的国家标准 |
 | 7. | Spc.org.cn.js | [018](https://github.com/018) | 抓取[中国标准在线服务网](https://www.spc.org.cn/index)元数据 |
+| 8. | jd.js | [018](https://github.com/018) | [京东](https://book.jd.com/)图书条目抓取 |
+| 9. | dangdang.js | [018](https://github.com/018) | [当当](http://book.dangdang.com/)图书条目抓取 |
+
+2. **Tampermonkey脚本**
+
+| 序号 | 脚本下载地址 | 贡献者 | 备注 |
+| ---- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
+| 1    | [豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682) | [018](https://github.com/018/translators) | 如果存在中图分类，则会在豆瓣信息栏中多显示如“中图分类: B842.1 (B84 心理学 ▸ B842 心理过程、心理状态 ▸ B842.1 认知)”，方便对图书进行分类。 |
+| 2    | [全图联盟](https://greasyfork.org/zh-CN/scripts/408790-) | [018](https://github.com/018/translators) | 下载DPF少操作一步，「文章下载」替换成「PDF下载」，点击直接下载。也可辅助Zotero translator的Superlib.js，直接抓取PDF。增加图书的中图法分类功能。 |
+| 3. | [知了](https://greasyfork.org/zh-CN/scripts/419901-%E7%9F%A5%E4%BA%86) | [018](https://github.com/018/translators) | 在知网页面跳转、直接阅读和下载「社科论文」。需要注定并登陆「[国家哲学社会科学文献中心（NCPSSD）](http://www.ncpssd.org/)」以及「[国家哲学社会科学学术期刊数据库（NSSD）](http://www.ncpssd.org/) 」|
 
 3. **Zotero插件**
 
@@ -74,6 +77,8 @@
 | 类别       | 网址                                                         |
 | ---------- | ------------------------------------------------------------ |
 | 搜索引擎   | [Magi](https://magi.com/)                                    |
+| 集合搜索   | [一个开始](https://aur.one/)                                 |
+| 集合搜索   | [虫部落](https://search.chongbuluo.com/)                     |
 | 程序性知识 | [wikiHow: How-to instructions you can trust.](https://www.wikihow.com/Main-Page) |
 | 导航网站   | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
 | 导航网站   | [Sites Like - Find and share similar websites on siteslike](https://www.siteslike.com/) |
@@ -123,6 +128,8 @@
 ---
 
 ### changelog:
+
+- 2020.03.24 添加Jd.js和dangdang.js当前支持图书条目单抓，添加资源清单
 
 - 2020.02.20 添加理财拓荒营地址、更新其他资源
 
