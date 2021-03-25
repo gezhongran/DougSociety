@@ -2,14 +2,14 @@
 	"translatorID": "ec98c7f1-1f76-43d1-a5fd-fc36428fba58",
 	"label": "Dangdang",
 	"creator": "018<lyb018@gmail.com>",
-	"target": "^http?://product\\.dangdang\\.com/",
+	"target": "^http?://(product|search)\\.dangdang\\.com/",
 	"minVersion": "3.0",
 	"maxVersion": "",
 	"priority": 100,
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-03-24 12:23:56"
+	"lastUpdated": "2021-03-25 11:59:39"
 }
 
 /*
@@ -37,15 +37,52 @@
 
 // eslint-disable-next-line
 function attr(docOrElem,selector,attr,index){var elem=index?docOrElem.querySelectorAll(selector).item(index):docOrElem.querySelector(selector);return elem?elem.getAttribute(attr):null;}function text(docOrElem,selector,index){var elem=index?docOrElem.querySelectorAll(selector).item(index):docOrElem.querySelector(selector);return elem?elem.textContent:null;}function trim(content){return content.replace(/^[\xA0\s]+/gm, '').replace(/[\xA0\s]+$/gm, '').replace(/\n+/g, '\n').replace(/:\n+/g, ': ').replace(/]\n/g, ']').replace(/】\n/g, '】').replace(/\n\/\n/g, '/')}
+// eslint-disable-next-line
+function getContentsFromURL(url){try{var xmlhttp=new XMLHttpRequest();xmlhttp.open("GET",url,false);xmlhttp.overrideMimeType("application/json");xmlhttp.send(null);return xmlhttp.responseText;}catch(e){}}
 
 // https://aurimasv.github.io/z2csl/typeMap.xml#map-statute
 
 function detectWeb(doc, url) {
-	return 'book';
+	if (url.includes('product')) {
+		return 'book';
+	} else if (url.includes('search')) {
+		return 'multiple';
+	}
+	return '';
+}
+
+
+function getSearchResults(doc) {
+	var items = {};
+	var found = false;
+	var rows = doc.querySelectorAll('#search_nature_rg ul li');
+	Z.debug('rows: ' + rows.length);
+	for (let row of rows) {
+		let a = row.querySelector('a');
+		if (!a) {
+			continue;
+		}
+
+		var title = a.title.replace(/【.*】/g, '');
+		var url = a.href
+
+		items[url] = title;
+	}
+	return items;
 }
 
 function doWeb(doc, url) {
-	scrapeSpc(doc, url);
+	if (detectWeb(doc, url) == "multiple") {
+		Zotero.selectItems(getSearchResults(doc), function (items) {
+			// Z.debug(items);
+			if (items) {
+				ZU.processDocuments(Object.keys(items), scrapeSpc);
+			}
+		});
+	}
+	else {
+		scrapeSpc(doc, url);
+	}
 }
 
 function scrapeSpc(document, url) {
@@ -79,31 +116,24 @@ function scrapeSpc(document, url) {
 		}
 	}
 	
-	var describe = document.querySelector('#detail_describe > ul');
-	if (describe) {
-		var infos = describe.innerText;
-		infos = infos.replace(/^[\xA0\s]+/gm, '')
-			.replace(/[\xA0\s]+$/gm, '')
-			.replace(/\n+/g, '\n')
-			.replace(/:\n+/g, ': ')
-			.replace(/]\n/g, ']')
-			.replace(/】\n/g, '】')
-			.replace(/\n\/\n/g, '/');
-		for (var section of Object.values(infos.split('\n'))) {
-			if (!section || section.trim().length <= 0) continue;
-	
-			let index = section.indexOf('：');
-			if (index <= -1) continue;
-	
-			let key = section.substr(0, index).trim();
-			let value = section.substr(index + 1).trim();
-			switch (key) {
-				case "国际标准书号ISBN":
-					newItem.ISBN = value;
-					break;
-				case "丛书名":
-					newItem.series = value;
-					break;
+	var lis = document.querySelectorAll('#detail_describe > ul li');
+	if (lis) {
+		for (var li of lis) {
+			if (li) {
+				var section = li.innerText;
+				let index = section.indexOf('：');
+				if (index <= -1) continue;
+		
+				let key = section.substr(0, index).trim();
+				let value = section.substr(index + 1).trim();
+				switch (key) {
+					case "国际标准书号ISBN":
+						newItem.ISBN = value;
+						break;
+					case "丛书名":
+						newItem.series = value;
+						break;
+				}
 			}
 		}
 	}
@@ -127,15 +157,46 @@ function scrapeSpc(document, url) {
 	var descrip = document.querySelector('#content > div.descrip');
 	if (descrip) {
 		newItem.abstractNote = descrip.innerText;
+	} else {
+		var element = Object.values(document.scripts).find(element => element.textContent.includes('prodSpuInfo'))
+		if (element) {
+			var pattern = /var prodSpuInfo = {.+}/
+			if (pattern.test(element.textContent)) {
+				Z.debug(pattern.exec(element.textContent)[0])
+				eval(pattern.exec(element.textContent)[0]);
+				if (prodSpuInfo) {
+					var productId = prodSpuInfo.productId
+					var categoryPath = prodSpuInfo.categoryPath
+					var describeMap = prodSpuInfo.describeMap
+					var template = prodSpuInfo.template
+					var shopId = prodSpuInfo.shopId
+					var url0 = 'http://product.dangdang.com/index.php?r=callback%2Fdetail&productId=' + productId +
+					  '&templateType=' + template + '&describeMap=' + encodeURIComponent(describeMap) + '&shopId=' + shopId + '&categoryPath=' + categoryPath
+
+					var json = getContentsFromURL(url0);
+					if (json) {
+						var parser = new DOMParser()
+						var xml = parser.parseFromString(JSON.parse(json).data.html, 'text/html')
+						var content = xml.querySelector('#content')
+						if (content) {
+							newItem.abstractNote = content.innerText;
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	var span1 = document.querySelector('span[dd_name="全部评论"]');
 	var span2 = document.querySelector('span[dd_name="好评"]');
-	if( span1 && span2) {
+	if( span1 && span2 && span1.innerText.match(/\d+/g) && span2.innerText.match(/\d+/g)) {
 		newItem.extra = span1.innerText.match(/\d+/g) + '/' + span2.innerText.match(/\d+/g);
 	}
 	newItem.complete();
 }
+
+
+
 
 
 /** BEGIN TEST CASES **/
@@ -168,6 +229,11 @@ var testCases = [
 				"seeAlso": []
 			}
 		]
+	},
+	{
+		"type": "web",
+		"url": "http://search.dangdang.com/?key=9787300256535&act=input",
+		"items": "multiple"
 	}
 ]
 /** END TEST CASES **/
