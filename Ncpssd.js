@@ -157,7 +157,7 @@ function getPdfUrl(pdfurl, type) {
 		pdftype = 4;
 	}
 	
-	return pdfurl + '&type=' + pdftype;
+	return pdfurl.replace('www.nssd.org', 'www.nssd.cn') + '&type=' + pdftype;
 }
 
 // 中文期刊文章

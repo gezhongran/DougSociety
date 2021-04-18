@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-03-25 10:51:26"
+	"lastUpdated": "2021-04-18 07:35:18"
 }
 
 /*
@@ -57,12 +57,13 @@ function getSearchResults(doc) {
 	var rows = doc.querySelectorAll('#J_goodsList > ul:nth-child(1) > li.gl-item');
 	// Z.debug(rows.length);
 	for (let row of rows) {
-		let a = row.querySelector('.p-img a');
+		let a = row.querySelector('.p-name a');
 		if (!a) {
 			continue;
 		}
 
-		var title = a.title;
+		let em = a.querySelector('em');
+		var title = em.textContent.trim();
 		var url = a.href
 
 		items[url] = title;
