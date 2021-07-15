@@ -39,8 +39,8 @@
 
 | 序号 | 插件下载地址 |<span style="white-space:nowrap;">贡献者&nbsp;&nbsp;&nbsp;&nbsp;</span> | 备注                                                         |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | [zotupdate](https://github.com/018/zotupdate)                | [018](https://github.com/018)                    | 1、更新：更新书籍的中图法及豆瓣评分(如果来源于douban)；<br />2：拉目录：(如果来源于douban)拉目录作为笔记。<br />3：下载试读：尝试下载目录、序、试读的正文等。<br />4：下载电子书：尝试下载电子书。 |
-| 2 | [zotcard](https://github.com/018/zotcard) | [018](https://github.com/018) | zotcard是Zotero的一个插件，它可以帮助你快速写卡片，提供了如概念卡、人物卡、反常识卡等等卡片模版，只需一步即可直接写卡。还提供复制多张卡片及批量打开浮动编辑窗口，方便拼卡成文。 |
+| 1    | [zotupdate](https://github.com/018/zotupdate)                | [018](https://github.com/018)                    | 1.更新：更新书籍的中图法及豆瓣评分(如果来源于douban)；<br />2.整理：整理并规则作者命名方式<br />3.拉目录：(如果来源于douban)拉目录作为笔记。<br />4.下载试读：尝试下载目录、序、试读的正文等。<br />5.下载电子书：尝试下载电子书。 |
+| 2 | [zotcard](https://github.com/018/zotcard) | [018](https://github.com/018) | zotcard是一个快速写卡片，提供格式卡模板<br />1.提供六种预设格式卡：概念卡、人物卡、通用卡等，只需一步即可直接写卡。可自行调整<br />2.提个6个卡槽定制卡片内容，可自行调整。<br />3.可批量替换卡片内容<br />4.卡批量打开浮动编辑窗口，方便拼卡成文。 |
 
 ## B. 友情链接
 
@@ -83,7 +83,7 @@
 | 公众号     | [新榜](https://www.newrank.cn/)                              |
 | 关键词     | [XLore](https://xlore.org/)                                  |
 | 关键词     | [术语在线](http://termonline.cn/index.htm)                   |
-| 关键词     | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home) |
+| 关键词     | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home)-汉语主题词表 |
 | 关键词     | [微词云](https://www.weiciyun.com/)                          |
 | 金句名言   | [维基语录](https://zh.m.wikiquote.org/)                      |
 | 金句名言   | [名言通](https://www.mingyantong.com/)                       |
@@ -122,6 +122,8 @@
 ---
 
 ### changelog:
+
+- 2021.07.15 更新使用说明、zotcard插件功能更新
 
 - 2021.04.19 修复ncpssd.js获取PDF Bug与修复Jingdong.js批量抓取时显示图书条目Bug
 
@@ -166,7 +168,6 @@
 - 2020.08.14 创建仓库，添加初始资源
 
   
-
 
 
 
