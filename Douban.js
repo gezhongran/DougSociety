@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2020-12-19 13:18:10"
+	"lastUpdated": "2021-08-02 04:11:29"
 }
 
 /*
@@ -281,18 +281,10 @@ function scrape(doc, url) {
 				item.numPages = value;
 				break;
 			case "出版社":
+				item.publisher = value;
+				break;
 			case "出品方":
-				if (item.publisher && item.publisher.length >= 1) {
-					if (value.includes(item.publisher)) {
-						item.publisher = value;
-					}
-					else if (!item.publisher.includes(value)) {
-						item.publisher = value + " | " + item.publisher;
-					}
-				}
-				else {
-					item.publisher = value;
-				}
+				item.rights = value;
 				break;
 			case "丛书":
 				item.series = value;
@@ -400,8 +392,9 @@ function scrape(doc, url) {
 				let dir = text(doc, '#dir_' + id + '_full');
 				if (dir) {
 					dir = dir.replace(/(([\xA0\s]*)\n([\xA0\s]*))+/g, '<br>').replace('· · · · · ·     (收起)', '');
+					let note1 = '<p><strong>目录</strong></p>\n<p><img src="' + doc.querySelector('.nbg').href + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>' + dir + '</p>';
 					item.notes.push({
-						note: '<p><strong>目录</strong></p>\n<p>' + dir + '</p>'
+						note: note1
 					});
 				}
 			}
