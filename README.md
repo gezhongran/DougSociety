@@ -26,6 +26,7 @@
 | 7. | Spc.org.cn.js | [018](https://github.com/018) | 抓取[中国标准在线服务网](https://www.spc.org.cn/index)元数据 |
 | 8. | jd.js | [018](https://github.com/018) | [京东](https://book.jd.com/)图书条目抓取 |
 | 9. | dangdang.js | [018](https://github.com/018) | [当当](http://book.dangdang.com/)图书条目抓取 |
+| 10. | uRead.js | [018](https://github.com/018) | [今日优读](http://uread.today/)数据抓取 |
 
 2. **Tampermonkey脚本**
 
@@ -41,6 +42,7 @@
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1    | [zotupdate](https://github.com/018/zotupdate)                | [018](https://github.com/018)                    | 1.更新：更新书籍的中图法及豆瓣评分(如果来源于douban)；<br />2.整理：整理并规则作者命名方式<br />3.拉目录：(如果来源于douban)拉目录作为笔记。<br />4.下载试读：尝试下载目录、序、试读的正文等。<br />5.下载电子书：尝试下载电子书。 |
 | 2 | [zotcard](https://github.com/018/zotcard) | [018](https://github.com/018) | zotcard是一个快速写卡片，提供格式卡模板<br />1.提供六种预设格式卡：概念卡、人物卡、通用卡等，只需一步即可直接写卡。可自行调整<br />2.提个6个卡槽定制卡片内容，可自行调整。<br />3.可批量替换卡片内容<br />4.卡批量打开浮动编辑窗口，方便拼卡成文。 |
+| 3. | [zoturead](https://github.com/018/zoturead) | [018](https://github.com/018) | [今日优读](http://uread.today)，帮助你更快学习。 <br />1、今日优读网站相关：刷新、收录、查看中图分类、学科、作者等信息、添加目录对比等等。 <br />2、搜索相关：通过今日优读搜索、Zotero本身搜索、豆瓣、全图书馆参考咨询联盟、京东、当当、百度、谷歌搜索。 <br />3、辅助工具：展开、收起，整理，修复中图分类号、修复学科号，根据学科号归档，定位书籍所在分类目录。 <br />4、自动新增学科目录。 <br />5、一键更新Translator。 |
 
 ## B. 友情链接
 
@@ -68,52 +70,31 @@
 
 6. **优质信源清单**
 
-| 类别       | 网址                                                         |
-| ---------- | ------------------------------------------------------------ |
-| 搜索引擎   | [Magi](https://magi.com/)                                    |
-| 集合搜索   | [一个开始](https://aur.one/)                                 |
-| 集合搜索   | [虫部落](https://search.chongbuluo.com/)                     |
-| 程序性知识 | [wikiHow: How-to instructions you can trust.](https://www.wikihow.com/Main-Page) |
-| 导航网站   | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
-| 导航网站   | [Sites Like - Find and share similar websites on siteslike](https://www.siteslike.com/) |
-| RSS        | [公众号-瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)           |
-| RSS        | [公众号-WeRSS](https://werss.app/)                           |
-| RSS        | [Feed43](https://feed43.com/)                                |
-| RSS        | [RSSHUB](https://docs.rsshub.app/)                           |
-| 公众号     | [新榜](https://www.newrank.cn/)                              |
-| 关键词     | [XLore](https://xlore.org/)                                  |
-| 关键词     | [术语在线](http://termonline.cn/index.htm)                   |
-| 关键词     | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home)-汉语主题词表 |
-| 关键词     | [微词云](https://www.weiciyun.com/)                          |
-| 金句名言   | [维基语录](https://zh.m.wikiquote.org/)                      |
-| 金句名言   | [名言通](https://www.mingyantong.com/)                       |
-| 论文       | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
-| 论文       | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
-| 论文       | [Sci-Hub](https://sci-hub.se/)                               |
-| 论文       | [You are Crossref（DOI）](https://www.crossref.org/)         |
-| 免费影视   | [电影狗](http://www.dianyinggou.com/)                        |
-| 免费影视   | [茶杯狐 ](https://www.cupfox.com/)                           |
-| 数据源     | [Worldometer - real time world statistics（全球实时数据）](https://www.worldometers.info/) |
-| 数据源     | [国务院发展研究中心信息网（国研网）](http://www.drcnet.com.cn/www/int/) |
-| 数据源     | [中经网统计数据库](https://db.cei.cn/)                       |
-| 设计资源   | [花瓣网](https://huaban.com/)                                |
-| 设计资源   | [Unsplash-开源图片](https://unsplash.com/)                   |
-| 图书       | [全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)     |
-| 图书       | [WorldCat.org:世界上最大的图书馆目录](https://www.worldcat.org/) |
-| 报告       | [199IT中文互联网数据咨询](http://www.199it.com/)             |
-| 报告       | [艾瑞网](https://www.iresearch.cn/)                          |
-| 报告       | [艾媒网](https://www.iimedia.cn/)                            |
-| 网盘搜索   | [凌风云 ](https://www.lingfengyun.com/)                      |
-| 网盘搜索   | [云盘精灵](https://www.yunpanjingling.com/)                  |
-| 网页脚本   | [万能命令](https://wanneng.run/cn/)                          |
-| 垂直搜索   | [豆列专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:0u2qhakyyb3) |
-| 垂直搜索   | [B站专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:cajuod9wgd6) |
-| 知识图谱   | [Acemap](https://www.acemap.info/)                           |
-| 图书馆     | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
-| 图书馆     | [浙江省图书馆](https://www.zjlib.cn/)                        |
-| 图书馆     | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
-| 无敌的存在 | [互联网时光机](https://web.archive.org/)                     |
-| 投资       | [SEC Form 13F](https://whalewisdom.com/)                     |
+| 类别     | 网址                                                         |
+| -------- | ------------------------------------------------------------ |
+| 搜索引擎 | [Magi](https://magi.com/)                                    |
+| 集合搜索 | [一个开始](https://aur.one/)                                 |
+| 导航网站 | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
+| RSS      | [公众号-瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)           |
+| RSS      | [公众号-WeRSS](https://werss.app/)                           |
+| 关键词   | [XLore](https://xlore.org/)                                  |
+| 关键词   | [术语在线](http://termonline.cn/index.htm)                   |
+| 关键词   | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home)-汉语主题词表 |
+| 关键词   | [微词云](https://www.weiciyun.com/)                          |
+| 论文下载 | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
+| 论文下载 | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
+| 论文下载 | [Sci-Hub](https://sci-hub.se/)                               |
+| 论文下载 | [You are Crossref（DOI）](https://www.crossref.org/)         |
+| 论文下载 | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
+| 论文下载 | [浙江省图书馆](https://www.zjlib.cn/)                        |
+| 论文下载 | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
+| 免费影视 | [电影狗](http://www.dianyinggou.com/)                        |
+| 免费影视 | [茶杯狐 ](https://www.cupfox.com/)                           |
+| 图书     | [全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)     |
+| 图书     | [WorldCat.org:世界上最大的图书馆目录](https://www.worldcat.org/) |
+| 网盘搜索 | [凌风云 ](https://www.lingfengyun.com/)                      |
+| 垂直搜索 | [豆列专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:0u2qhakyyb3) |
+| 垂直搜索 | [B站专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:cajuod9wgd6) |
 ---
 **欢迎关注公众号：**
 
@@ -122,6 +103,8 @@
 ---
 
 ### changelog:
+
+- 2021.08.08 添加ZotRead插件与uRead.js、更新优质信息源清单
 
 - 2021.08.01 Douban.js更新，品牌与出版社拆分，如“万千心理|中国轻工业出版社”，“万千心理”被放入“版权”元数据
 
