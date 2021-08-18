@@ -1,15 +1,15 @@
 {
 	"translatorID": "5c95b67b-41c5-4f55-b71a-48d5d7183063",
 	"label": "CNKI",
-	"creator": "Aurimas Vinckevicius, Xingzhong Lin, 018",
-	"target": "^https?://([^/]+\\.)?cnki\\.net",
+	"creator": "Aurimas Vinckevicius, Xingzhong Lin",
+	"target": "^https?://([^/]+\\.)?cnki\\.|-net",
 	"minVersion": "3.0",
 	"maxVersion": "",
 	"priority": 100,
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcs",
-	"lastUpdated": "2021-01-19 09:38:37"
+	"lastUpdated": "2021-08-17 10:07:45"
 }
 
 /*
@@ -77,7 +77,7 @@ function getIDFromURL(url) {
 	var curRec = url.match(/[?&]currec=([^&#]*)/i);
 	if (!dbname || !dbname[1] || !filename || !filename[1]) return false;
 	
-	return { dbname: dbname[1], filename: filename[1], curRec: (curRec && !curRec[1] ? curRec[1] : ''), queryID: (queryID && !queryID[1] ? queryID[1] : ''), url: url };
+	return { dbname: dbname[1], filename: filename[1], curRec: curRec ? curRec[1] : '', queryID: queryID ? queryID[1] : '', url: url };
 }
 
 
@@ -137,7 +137,6 @@ function getItemsFromSearchResults(doc, url, itemInfo) {
 	}
 
 	if (!links.length) {
-		// 018<lyb018@gmail.com>: 20200909
 		if (url.match(/(kns8|KNS8)\/(defaultresult|AdvSearch)/i)) {
 			return { '': '【提醒：不存在条目。】' };
 		}
@@ -154,7 +153,7 @@ function getItemsFromSearchResults(doc, url, itemInfo) {
 		// pre-released item can not get ID from URL, try to get ID from element.value
 		if (!id) {
 			var td1 = ZU.xpath(links[i], './td')[0];
-			var tmp = td1.querySelector('input').value.split('!');
+			var tmp = td1.value.split('!');
 			id = { dbname: tmp[0], filename: tmp[1], url: a.href };
 		}
 		if (!title || !id) continue;
@@ -175,7 +174,6 @@ function detectWeb(doc, url) {
 		return getTypeFromDBName(id.dbname);
 	}
 	else if (items || url.match(/(kns8|KNS8)\/(defaultresult|AdvSearch)/i)) {
-		// 018<lyb018@gmail.com>: 20200909
 		return "multiple";
 	}
 	else {
@@ -193,7 +191,6 @@ function doWeb(doc, url) {
 			var itemInfoByTitle = {};
 			var ids = [];
 			for (var url in selectedItems) {
-				// 018<lyb018@gmail.com>: 20200909
 				if (url && url.length > 0) {
 					ids.push(itemInfo[url].id);
 					itemInfoByTitle[selectedItems[url]] = itemInfo[url];
@@ -228,8 +225,10 @@ function scrape(ids, doc, url, itemInfo) {
 					creator.lastName = creator.lastName.substr(lastSpace + 1);
 				}
 				else {
-					// 018<lyb018@gmail.com>: 20200909
 					creator.firstName = '';
+					// Chinese name: first character is last name, the rest are first name (ignoring compound last names which are rare)
+					creator.firstName = creator.lastName.substr(1);
+					creator.lastName = creator.lastName.charAt(0);
 				}
 			}
 			
@@ -255,32 +254,10 @@ function scrape(ids, doc, url, itemInfo) {
 			else {
 				newItem.url = url;
 			}
-
 			// CN 中国刊物编号，非refworks中的callNumber
 			// CN in CNKI refworks format explains Chinese version of ISSN
 			if (newItem.callNumber) {
-			//	newItem.extra = 'CN ' + newItem.callNumber;
-				newItem.callNumber = "";
-			}
-			// 018<lyb018@gmail.com>: 20210108
-			var num = doc.querySelector('#func3 .num');
-			if (!num) {
-				var e = doc.querySelector('[value="' + dbname + '!' + filename + '!' + curRec + '!' + queryID + '"]');
-				if (e) {
-					e = e.parentElement;
-				}
-				if (e) {
-					e = e.parentElement;
-				}
-				if (e) {
-					e = e.querySelector('.quote a');
-				}
-				if (e) {
-					num  = e
-				}
-			}
-			if (num) {
-				newItem.extra = num.textContent.replace(/[^\d*]/g, '');
+				newItem.extra = 'CN ' + newItem.callNumber;
 			}
 			// don't download PDF/CAJ on searchResult(multiple)
 			var webType = detectWeb(doc, url);
@@ -481,59 +458,6 @@ var testCases = [
 					},
 					{
 						"tag": "黄瓜"
-					}
-				],
-				"notes": [],
-				"seeAlso": []
-			}
-		]
-	},
-	{
-		"type": "web",
-		"url": "http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFDTEMP&filename=1019926131.nh&v=MTA5MjM2RjdxNkdORFBycEViUElSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMT2VadVJxRnkzblY3dkJWRjI=",
-		"items": [
-			{
-				"itemType": "thesis",
-				"title": "商业银行个人住房不良资产证券化多元回归定价方法研究",
-				"creators": [
-					{
-						"lastName": "张",
-						"firstName": "雪",
-						"creatorType": "author"
-					}
-				],
-				"date": "2019",
-				"abstractNote": "不良资产证券化是一种新型的不良资产处置方式,其拓宽了商业银行处理不良资产的手段,特别适用于单户金额小、户数多的个人不良资产批量处置,而且这种市场化处置方式将银行不良资产处置和资本市场证券产品发行两个不同领域联接在一起,提高了不良资产的价值。本文以个人住房不良资产证券化为研究对象,确定资产池内不良资产未来回收价值。综合对比市场常用的定价方法,在此基础上提出建立多元回归定价模型的思路。利用YN银行个人住房不良贷款历史数据,分析得出影响不良资产定价的因素,建立定价方程,并对拟证券化的虚拟资产池计算整体回收价值,证明多元回归定价模型的有效性。本文提出的定价模型规避了传统资产定价方法效率低、评估结果不严...",
-				"language": "中文;",
-				"libraryCatalog": "CNKI",
-				"thesisType": "硕士",
-				"university": "浙江大学",
-				"url": "http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFDTEMP&filename=1019926131.nh&v=MTA5MjM2RjdxNkdORFBycEViUElSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMT2VadVJxRnkzblY3dkJWRjI=",
-				"attachments": [],
-				"tags": [
-					{
-						"tag": "Asset pool pricing"
-					},
-					{
-						"tag": "Multiple regression pricing model"
-					},
-					{
-						"tag": "Non-performing asset securitization"
-					},
-					{
-						"tag": "Personal housing loan"
-					},
-					{
-						"tag": "不良资产证券化"
-					},
-					{
-						"tag": "个人住房贷款"
-					},
-					{
-						"tag": "多元回归定价模型"
-					},
-					{
-						"tag": "资产池定价"
 					}
 				],
 				"notes": [],
