@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-04-18 07:35:18"
+	"lastUpdated": "2021-09-30 03:20:22"
 }
 
 /*
@@ -161,6 +161,16 @@ function scrapeSpc(document, url) {
 					break;
 			}
 		}
+	}
+
+	// 中图clc作为标签，需要安装油猴插件：https://greasyfork.org/zh-CN/scripts/408682
+	var clc = text(document, '#clc');
+	if (clc) {
+		newItem.archiveLocation = clc;
+	}
+	var subject = text(document, '#subject');
+	if (subject) {
+		newItem.archive = subject;
 	}
 
 	// 简介

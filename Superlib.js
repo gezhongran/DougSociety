@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2020-09-09 12:53:45"
+	"lastUpdated": "2021-09-30 03:26:17"
 }
 
 /*
@@ -231,6 +231,14 @@ function scrape(doc, url, pdfurl) {
 				}
 			}
 		
+			var clc = text(doc, '#clc');
+			if (clc) {
+				item.archiveLocation = clc;
+			}
+			var subject = text(doc, '#subject');
+			if (subject) {
+				item.archive = subject;
+			}
 			// 摘要
 			item.abstractNote = text(doc, '.tu_content').replace(/内容提要:\n*/g, '');
 			break;

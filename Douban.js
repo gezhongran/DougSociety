@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-08-02 04:11:29"
+	"lastUpdated": "2021-09-30 03:22:48"
 }
 
 /*
@@ -429,6 +429,10 @@ function scrape(doc, url) {
 	var clc = text(doc, '#clc');
 	if (clc) {
 		item.archiveLocation = clc;
+	}
+	var subject = text(doc, '#subject');
+	if (subject) {
+		item.archive = subject;
 	}
 
 	// 评分 & 评价人数
