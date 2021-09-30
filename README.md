@@ -110,6 +110,8 @@
 
 ### changelog:
 
+- 2021.09.29 更新Jd.js, Douban.js,Dangdang.js,Superlib.js,配合[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)插件，直接抓中图分类号和学科分类号。
+
 - 2021.08.18 更新Cnki.js，增加知网通配性，适配“cnki-net”的图书馆代理下载、添加今日优读
 
 - 2021.08.08 添加ZotRead插件与uRead.js、更新优质信息源清单
@@ -118,7 +120,7 @@
 
 - 2021.07.15 更新使用说明、zotcard插件功能更新
 
-- 2021.04.19 修复ncpssd.js获取PDF Bug与修复Jingdong.js批量抓取时显示图书条目Bug
+- 2021.04.19 修复ncpssd.js获取PDF Bug与修复Jd.js批量抓取时显示图书条目Bug
 
 - 2021.04.08 删除在线卡片制作工具
 
@@ -164,3 +166,4 @@
 
 
 
+ 
