@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-09-30 03:22:48"
+	"lastUpdated": "2021-11-17 10:15:46"
 }
 
 /*
@@ -37,6 +37,12 @@
 
 // eslint-disable-next-line
 function attr(docOrElem,selector,attr,index){var elem=index?docOrElem.querySelectorAll(selector).item(index):docOrElem.querySelector(selector);return elem?elem.getAttribute(attr):null;}function text(docOrElem,selector,index){var elem=index?docOrElem.querySelectorAll(selector).item(index):docOrElem.querySelector(selector);return elem?elem.textContent:null;}
+
+
+function value(docOrElem, selector, index) {
+	var elem = index ? docOrElem.querySelectorAll(selector).item(index) : docOrElem.querySelector(selector);
+	return elem ? elem.value : '';
+}
 
 var TYPE_MAP = {
 	book: 'book',
@@ -86,6 +92,10 @@ function getResults1(rows, funcTitle, funcRating, funcRatingPeople, filter) {
 	for (let row of rows) {
 		if (filter && !filter(row)) continue;
 
+		let year
+		if (row.querySelector('div.abstract').textContent.match(/出版年:(.*)/)) {
+			year = row.querySelector('div.abstract').textContent.match(/出版年:(.*)/)[1].trim()
+		}
 		titleTag = funcTitle(row);
 		let href = titleTag.href;
 		let title = ZU.trimInternal(titleTag.textContent);
@@ -106,7 +116,7 @@ function getResults1(rows, funcTitle, funcRating, funcRatingPeople, filter) {
 				ratingPeople = 0;
 			}
 		}
-		title = '[' + rating + '/' + ratingPeople + '] ' + title;
+		title = '[' + rating + '/' + ratingPeople + '] ' + title + '(' + year + ')';
 		items[href] = title;
 	}
 
@@ -235,216 +245,323 @@ function doWeb(doc, url) {
 function scrape(doc, url) {
 	var itemType = detectType(doc);
 	var item = new Zotero.Item(itemType);
-
-	item.url = url;
-
-	item.title = text(doc, 'h1 span[property="v:itemreviewed"]');
-
-	var pattern, episodeCount, runningTime, runningTimeUnit;
-	var infos = text(doc, 'div[class*="subject"] div#info');
-	infos = infos.replace(/^[\xA0\s]+/gm, '')
-		.replace(/[\xA0\s]+$/gm, '')
-		.replace(/\n+/g, '\n')
-		.replace(/:\n+/g, ': ')
-		.replace(/]\n/g, ']')
-		.replace(/】\n/g, '】')
-		.replace(/\n\/\n/g, '/');
-	for (var section of Object.values(infos.split('\n'))) {
-		if (!section || section.trim().length <= 0) continue;
-
-		let index = section.indexOf(':');
-		if (index <= -1) continue;
-
-		let key = section.substr(0, index).trim();
-		let value = section.substr(index + 1).trim();
-		switch (key) {
-			// book
-			case "作者":
-				doPerson(item, value, "author");
-				break;
-			case "译者":
-				doPerson(item, value, "translator");
-				break;
-			case "原作名":
-			case "副标题":
-				if (item.shortTitle && item.shortTitle.length >= 1) {
-					item.shortTitle += " / " + value;
-				}
-				else {
-					item.shortTitle = value;
-				}
-				break;
-			case "ISBN":
-				item.ISBN = value;
-				break;
-			case "页数":
-				item.numPages = value;
-				break;
-			case "出版社":
-				item.publisher = value;
-				break;
-			case "出品方":
-				item.rights = value;
-				break;
-			case "丛书":
-				item.series = value;
-				break;
-			case "出版年":
-				item.date = value;
-				break;
-			// film & tvBroadcast
-			case "导演":
-				doPerson(item, value, "director");
-				break;
-			case "编剧":
-				doPerson(item, value, "scriptwriter");
-				break;
-			case "主演":
-				doPerson(item, value, "contributor");
-				break;
-			case "类型":
-				item.genre = value;
-				doTag(item, value);
-				break;
-			case "制片国家/地区":
-				if (itemType === 'tvBroadcast') {
-					item.network = value;
-				}
-				else {
-					item.distributor = value;
-				}
-				break;
-			case "语言":
-				item.language = value;
-				break;
-			case "上映日期":
-			case "首播":
-				// eslint-disable-next-line
-				pattern = /\d+[-|\/]\d+[-|\/]\d+/;
-				if (value && pattern.test(value)) {
-					item.date = pattern.exec(value)[0];
-				}
-				else {
-					item.date = value;
-				}
-				break;
-			case "季数":
-				// item.season = value;
-				break;
-			case "集数":
-				episodeCount = value;
-				break;
-			case "单集片长":
-				pattern = /\d+/;
-				if (value && pattern.test(value)) {
-					runningTime = pattern.exec(value)[0];
-					runningTimeUnit = value.replace(runningTime, "");
-				}
-				break;
-			case "片长":
-				item.runningTime = value;
-				break;
-			case "又名":
-				item.shortTitle = value;
-				break;
-			case "IMDb链接":
-				item.attachments.push({
-					url: "https://www.imdb.com/title/" + value,
-					snapshot: false,
-					title: "IMDb"
+	var zoteroCapture = doc.getElementById('zotero-capture');
+	Zotero.debug(zoteroCapture.getAttribute('visibled'));
+	if (zoteroCapture.getAttribute('visibled')) {
+		item.title = value(doc, '#zotero-title');
+		var creators = doc.querySelectorAll('.zotero-class-creators');
+		for (let creator of creators) {
+			var creatorType = creator.querySelector('.creatorType');
+			var lastName = creator.querySelector('.lastName input');
+			item.creators.push({
+				lastName: lastName.value,
+				creatorType: creatorType.getAttribute('creatorType'),
+				fieldMode: 1
+			});
+		}
+		item.abstractNote = value(doc, '#zotero-abstractNote');
+		item.series = value(doc, '#zotero-series');
+		item.seriesNumber = value(doc, '#zotero-seriesNumber');
+		item.volume = value(doc, '#zotero-volume');
+		item.numberOfVolumes = value(doc, '#zotero-numberOfVolumes');
+		item.edition = value(doc, '#zotero-edition');
+		item.place = value(doc, '#zotero-place');
+		item.publisher = value(doc, '#zotero-publisher');
+		item.date = value(doc, '#zotero-date');
+		item.numPages = value(doc, '#zotero-numPages');
+		item.language = value(doc, '#zotero-language');
+		item.ISBN = value(doc, '#zotero-ISBN');
+		item.shortTitle = value(doc, '#zotero-shortTitle');
+		item.url = value(doc, '#zotero-url');
+		item.archive = value(doc, '#zotero-archive');
+		item.archiveLocation = value(doc, '#zotero-archiveLocation');
+		item.callNumber = value(doc, '#zotero-callNumber');
+		item.rights = value(doc, '#zotero-rights');
+		item.extra = value(doc, '#zotero-extra');
+		
+		let zoteroNote1Enabled = doc.querySelector('#zotero-note1-enabled input');
+		if (zoteroNote1Enabled.checked) {
+			let notes = '<p><strong>初步评价</strong></p>\n<p>';
+			let zoteroNote1 = doc.querySelector('#zotero-note1');
+			notes += zoteroNote1.value.replace(/\t/g, '　') + '</p>';
+			
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroNote2Enabled = doc.querySelector('#zotero-note2-enabled input');
+		if (zoteroNote2Enabled.checked) {
+			let cover_url = doc.getElementById('zotero-coverurl');
+			let notes = '<p><strong>目录</strong></p>\n<p><img src="' + cover_url.src + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>';
+			let zoteroNote2 = doc.querySelector('#zotero-note2');
+			notes += zoteroNote2.value.replace(/\t/g, '　').replace(/\n/g, '<br/>') + '</p>';
+			
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroNote3Enabled = doc.querySelector('#zotero-note3-enabled input');
+		if (zoteroNote3Enabled.checked) {
+			let note3 = doc.getElementById('zotero-note3');
+			let notes = '<p><strong>豆瓣短评</strong></p>\n' + note3.outerHTML;
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroTagsEnabled = doc.querySelector('#zotero-tags-enabled input');
+		if (zoteroTagsEnabled.checked) {
+			var tags = doc.querySelectorAll('#zotero-tags .tag');
+			for (let tag of tags) {
+				item.tags.push({
+					tag: tag.innerText.trim()
 				});
-				break;
-			default:
-				break;
+			}
 		}
-	}
-
-	if (runningTime && episodeCount) {
-		item.runningTime = (runningTime * episodeCount).toString();
-		if (runningTimeUnit && runningTimeUnit.length >= 1) {
-			item.runningTime += runningTimeUnit;
+		
+		let zoteroAttachment1Enabled = doc.querySelector('#zotero-attachment1-enabled input');
+		if (zoteroAttachment1Enabled && zoteroAttachment1Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment1');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
 		}
-	}
+		let zoteroAttachment2Enabled = doc.querySelector('#zotero-attachment2-enabled input');
+		if (zoteroAttachment2Enabled && zoteroAttachment2Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment2');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
+		}
+		let zoteroAttachment3Enabled = doc.querySelector('#zotero-attachment3-enabled input');
+		if (zoteroAttachment3Enabled && zoteroAttachment3Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment3');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
+		}
+	} else {
 
-	// 摘要
-	let abstractNote;
-	switch (itemType) {
-		case "book":
-			var h2s = doc.querySelectorAll('div.related_info h2');
-			for (var i = 0; i < h2s.length; i++) {
-				let h2 = h2s[i];
-				let span = h2.querySelector('span');
-				if (span && span.textContent === '内容简介') {
-					var intro = h2.nextElementSibling.querySelector('.all div.intro');
-					if (!intro) {
-						intro = h2.nextElementSibling.querySelector('div.intro');
+		item.url = url;
+		item.title = text(doc, 'h1 span[property="v:itemreviewed"]');
+	
+		var pattern, episodeCount, runningTime, runningTimeUnit;
+		var infos = text(doc, 'div[class*="subject"] div#info');
+		infos = infos.replace(/^[\xA0\s]+/gm, '')
+			.replace(/[\xA0\s]+$/gm, '')
+			.replace(/\n+/g, '\n')
+			.replace(/:\n+/g, ': ')
+			.replace(/]\n/g, ']')
+			.replace(/】\n/g, '】')
+			.replace(/\n\/\n/g, '/');
+		for (var section of Object.values(infos.split('\n'))) {
+			if (!section || section.trim().length <= 0) continue;
+	
+			let index = section.indexOf(':');
+			if (index <= -1) continue;
+	
+			let key = section.substr(0, index).trim();
+			let value = section.substr(index + 1).trim();
+			switch (key) {
+				// book
+				case "作者":
+					doPerson(item, value, "author");
+					break;
+				case "译者":
+					doPerson(item, value, "translator");
+					break;
+				case "原作名":
+				case "副标题":
+					if (item.shortTitle && item.shortTitle.length >= 1) {
+						item.shortTitle += " / " + value;
 					}
-					if (intro) {
-						abstractNote = intro.textContent;
+					else {
+						item.shortTitle = value;
 					}
 					break;
-				}
-			}
-
-			var doubanDir = Z.getHiddenPref('douban');
-			if (doubanDir && doubanDir.split(',').includes('dir')) {
-				let id = getIDFromURL(url);
-				let dir = text(doc, '#dir_' + id + '_full');
-				if (dir) {
-					dir = dir.replace(/(([\xA0\s]*)\n([\xA0\s]*))+/g, '<br>').replace('· · · · · ·     (收起)', '');
-					let note1 = '<p><strong>目录</strong></p>\n<p><img src="' + doc.querySelector('.nbg').href + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>' + dir + '</p>';
-					item.notes.push({
-						note: note1
+				case "ISBN":
+					item.ISBN = value;
+					break;
+				case "页数":
+					item.numPages = value;
+					break;
+				case "出版社":
+					item.publisher = value;
+					break;
+				case "出品方":
+					item.rights = value;
+					break;
+				case "丛书":
+					item.series = value;
+					break;
+				case "出版年":
+					item.date = value;
+					break;
+				// film & tvBroadcast
+				case "导演":
+					doPerson(item, value, "director");
+					break;
+				case "编剧":
+					doPerson(item, value, "scriptwriter");
+					break;
+				case "主演":
+					doPerson(item, value, "contributor");
+					break;
+				case "类型":
+					item.genre = value;
+					doTag(item, value);
+					break;
+				case "制片国家/地区":
+					if (itemType === 'tvBroadcast') {
+						item.network = value;
+					}
+					else {
+						item.distributor = value;
+					}
+					break;
+				case "语言":
+					item.language = value;
+					break;
+				case "上映日期":
+				case "首播":
+					// eslint-disable-next-line
+					pattern = /\d+[-|\/]\d+[-|\/]\d+/;
+					if (value && pattern.test(value)) {
+						item.date = pattern.exec(value)[0];
+					}
+					else {
+						item.date = value;
+					}
+					break;
+				case "季数":
+					// item.season = value;
+					break;
+				case "集数":
+					episodeCount = value;
+					break;
+				case "单集片长":
+					pattern = /\d+/;
+					if (value && pattern.test(value)) {
+						runningTime = pattern.exec(value)[0];
+						runningTimeUnit = value.replace(runningTime, "");
+					}
+					break;
+				case "片长":
+					item.runningTime = value;
+					break;
+				case "又名":
+					item.shortTitle = value;
+					break;
+				case "IMDb链接":
+					item.attachments.push({
+						url: "https://www.imdb.com/title/" + value,
+						snapshot: false,
+						title: "IMDb"
 					});
+					break;
+				default:
+					break;
+			}
+		}
+	
+		if (runningTime && episodeCount) {
+			item.runningTime = (runningTime * episodeCount).toString();
+			if (runningTimeUnit && runningTimeUnit.length >= 1) {
+				item.runningTime += runningTimeUnit;
+			}
+		}
+	
+		// 摘要
+		let abstractNote;
+		switch (itemType) {
+			case "book":
+				var h2s = doc.querySelectorAll('div.related_info h2');
+				for (var i = 0; i < h2s.length; i++) {
+					let h2 = h2s[i];
+					let span = h2.querySelector('span');
+					if (span && span.textContent === '内容简介') {
+						var intro = h2.nextElementSibling.querySelector('.all div.intro');
+						if (!intro) {
+							intro = h2.nextElementSibling.querySelector('div.intro');
+						}
+						if (intro) {
+							abstractNote = intro.textContent;
+						}
+						break;
+					}
+				}
+	
+				var doubanDir = Z.getHiddenPref('douban');
+				if (doubanDir && doubanDir.split(',').includes('dir')) {
+					let id = getIDFromURL(url);
+					let dir = text(doc, '#dir_' + id + '_full');
+					if (dir) {
+						dir = dir.replace(/(([\xA0\s]*)\n([\xA0\s]*))+/g, '<br>').replace('· · · · · ·     (收起)', '');
+						let note1 = '<p><strong>目录</strong></p>\n<p><img src="' + doc.querySelector('.nbg').href + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>' + dir + '</p>';
+						item.notes.push({
+							note: note1
+						});
+					}
+				}
+				break;
+			default:
+				abstractNote = text(doc, 'div.related-info span[class*="all"]');
+				if (!abstractNote) {
+					abstractNote = text(doc, 'div.related-info span');
+				}
+				break;
+		}
+		if (abstractNote) {
+			item.abstractNote = abstractNote.trim().replace(/(([\xA0\s]*)\n([\xA0\s]*))+/g, '\n');
+		}
+	
+		// 标签
+		// 豆瓣标签存在太多冗余(较理想方案是以图书在中图法中的分类作为标签)
+		// 保留原作者(Ace Strong<acestrong@gmail.com>)对标签抓取，有需要可以自行去掉注释
+		var doubanTags = Z.getHiddenPref('douban');
+		if (doubanTags && doubanTags.split(',').includes('tags')) {
+			var tags = text(doc, 'div#db-tags-section div.indent');
+			if (tags) {
+				tags = tags.replace(/((\s*)\n(\s*))+/g, '\n');
+				for (var tag of tags.split('\n')) {
+					if (!tag || tag.trim().length <= 0) continue;
+					item.tags.push(tag);
 				}
 			}
-			break;
-		default:
-			abstractNote = text(doc, 'div.related-info span[class*="all"]');
-			if (!abstractNote) {
-				abstractNote = text(doc, 'div.related-info span');
+		}
+	
+		// 中图clc作为标签，需要安装油猴插件：https://greasyfork.org/zh-CN/scripts/408682
+		var clc = text(doc, '#clc');
+		if (clc) {
+			item.archiveLocation = clc;
+		}
+		var subject = text(doc, '#subject');
+		if (subject) {
+			item.archive = subject;
+		}
+	
+		// 评分 & 评价人数
+		var rating = text(doc, 'strong[property*="v:average"]');
+		if (rating && (rating = rating.trim()).length >= 1) {
+			var ratingPeople = text(doc, 'div.rating_sum a.rating_people span[property="v:votes"]');
+			if (!ratingPeople || ratingPeople.toString().trim().length <= 0) {
+				ratingPeople = 0;
 			}
-			break;
-	}
-	if (abstractNote) {
-		item.abstractNote = abstractNote.trim().replace(/(([\xA0\s]*)\n([\xA0\s]*))+/g, '\n');
-	}
-
-	// 标签
-	// 豆瓣标签存在太多冗余(较理想方案是以图书在中图法中的分类作为标签)
-	// 保留原作者(Ace Strong<acestrong@gmail.com>)对标签抓取，有需要可以自行去掉注释
-	var doubanTags = Z.getHiddenPref('douban');
-	if (doubanTags && doubanTags.split(',').includes('tags')) {
-		var tags = text(doc, 'div#db-tags-section div.indent');
-		if (tags) {
-			tags = tags.replace(/((\s*)\n(\s*))+/g, '\n');
-			for (var tag of tags.split('\n')) {
-				if (!tag || tag.trim().length <= 0) continue;
-				item.tags.push(tag);
-			}
+			item.extra = rating + "/" + ratingPeople;
 		}
 	}
-
-	// 中图clc作为标签，需要安装油猴插件：https://greasyfork.org/zh-CN/scripts/408682
-	var clc = text(doc, '#clc');
-	if (clc) {
-		item.archiveLocation = clc;
-	}
-	var subject = text(doc, '#subject');
-	if (subject) {
-		item.archive = subject;
-	}
-
-	// 评分 & 评价人数
-	var rating = text(doc, 'strong[property*="v:average"]');
-	if (rating && (rating = rating.trim()).length >= 1) {
-		var ratingPeople = text(doc, 'div.rating_sum a.rating_people span[property="v:votes"]');
-		if (!ratingPeople || ratingPeople.toString().trim().length <= 0) {
-			ratingPeople = 0;
-		}
-		item.extra = rating + "/" + ratingPeople;
-	}
-
+	
 	item.complete();
 }
 
