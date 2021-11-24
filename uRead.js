@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-07-27 15:23:34"
+	"lastUpdated": "2021-11-24 07:21:19"
 }
 
 /*
@@ -43,6 +43,11 @@ function attr(docOrElem, selector, attr, index) {
 function text(docOrElem, selector, index) {
 	var elem = index ? docOrElem.querySelectorAll(selector).item(index) : docOrElem.querySelector(selector);
 	return elem ? elem.innerText : '';
+}
+
+function value(docOrElem, selector, index) {
+	var elem = index ? docOrElem.querySelectorAll(selector).item(index) : docOrElem.querySelector(selector);
+	return elem ? elem.value : '';
 }
 
 function trim(content) {
@@ -116,61 +121,168 @@ function doWeb(doc, url) {
 function scrape(doc, url) {
 	var itemType = detectType(doc);
 	var item = new Zotero.Item(itemType);
-
-	item.url = url;
-	item.title = text(doc, '#title');
-	item.publisher = text(doc, '#publisher');
-	item.date = text(doc, '#date');
-	item.ISBN = text(doc, '#isbn');
-	item.numPages = text(doc, '#pages');
-	item.archiveLocation = text(doc, '#clcs a:last-child span:nth-child(2)');
-	item.archive = text(doc, '#subjects a:last-child').replace(/\D/g, '');
-	item.abstractNote = text(doc, '#abstractNote');
-	item.edition = item.title.replace(/[^(第\d+版)]/g, '').replace(/\(|\)|第|版/g, '');
 	
-	var authors = doc.querySelectorAll('#author a');
-	for (let author of authors) {
-		item.creators.push({
-			lastName: author.innerText,
-			creatorType: 'author',
-			fieldMode: 1
-		});
-	}
-	var translators = doc.querySelectorAll('#translator a');
-	for (let translator of translators) {
-		item.creators.push({
-			lastName: translator.innerText,
-			creatorType: 'translator',
-			fieldMode: 1
-		});
-	}
-	var tags = doc.querySelectorAll('#tags a span');
-	for (let tag of tags) {
-		item.tags.push(tag.innerText);
-	}
-	item.extra = text(doc, '#doubanscore .score-value') + '/' + (text(doc, '#doubanscore .comments-value')||'').replace(/\(|\)|[\u4e00-\u9fa5]/g, '') + '|' + text(doc, '#score')
-	
-	let cover_url = attr(doc, '#cover', 'src');
-	let u = getBookCataloguesAPIURL(getDoi(url));
-	Zotero.Utilities.HTTP.doGet(u, function (retString) {
-		let ret = JSON.parse(retString);
-		if (ret.resultcode !== 1) {
-			return;
+	var zoteroCapture = doc.getElementById('zotero-capture');
+	if (zoteroCapture && zoteroCapture.getAttribute('visibled')) {
+		item.title = value(doc, '#zotero-title');
+		var creators = doc.querySelectorAll('.zotero-class-creators');
+		for (let creator of creators) {
+			var creatorType = creator.querySelector('.creatorType');
+			var lastName = creator.querySelector('.lastName input');
+			item.creators.push({
+				lastName: lastName.value,
+				creatorType: creatorType.getAttribute('creatorType'),
+				fieldMode: 1
+			});
 		}
-		let notes = '<p><strong>目录</strong></p>\n<p><img src="' + cover_url + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>';
-		let maxtier = 1;
-		for (let content of ret.data) {
-			maxtier = Math.max(content.tier, maxtier);
-		}
-		for (let json of ret.data) {
-			notes += '　'.repeat(json.tier - 1) + (maxtier > 1 && json.tier === 1 ? '<b>' : '') +  json.content + (maxtier > 1 && json.tier === 1 ? '</b>' : '') + '<br >';
-		}
-		notes += '</p>';
+		item.abstractNote = value(doc, '#zotero-abstractNote');
+		item.series = value(doc, '#zotero-series');
+		item.seriesNumber = value(doc, '#zotero-seriesNumber');
+		item.volume = value(doc, '#zotero-volume');
+		item.numberOfVolumes = value(doc, '#zotero-numberOfVolumes');
+		item.edition = value(doc, '#zotero-edition');
+		item.place = value(doc, '#zotero-place');
+		item.publisher = value(doc, '#zotero-publisher');
+		item.date = value(doc, '#zotero-date');
+		item.numPages = value(doc, '#zotero-numPages');
+		item.language = value(doc, '#zotero-language');
+		item.ISBN = value(doc, '#zotero-ISBN');
+		item.shortTitle = value(doc, '#zotero-shortTitle');
+		item.url = value(doc, '#zotero-url');
+		item.archive = value(doc, '#zotero-archive');
+		item.archiveLocation = value(doc, '#zotero-archiveLocation');
+		item.callNumber = value(doc, '#zotero-callNumber');
+		item.rights = value(doc, '#zotero-rights');
+		item.extra = value(doc, '#zotero-extra');
 		
-		item.notes.push({
-			note: notes
+		let zoteroNote1Enabled = doc.querySelector('#zotero-note1-enabled input');
+		if (zoteroNote1Enabled.checked) {
+			let notes = '<p><strong>初步评价</strong></p>\n<p>';
+			let zoteroNote1 = doc.querySelector('#zotero-note1');
+			notes += zoteroNote1.value.replace(/\t/g, '　') + '</p>';
+			
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroNote2Enabled = doc.querySelector('#zotero-note2-enabled input');
+		if (zoteroNote2Enabled.checked) {
+			let cover_url = doc.getElementById('zotero-coverurl');
+			let notes = '<p><strong>目录</strong></p>\n<p><img src="' + cover_url.src + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>';
+			let zoteroNote2 = doc.querySelector('#zotero-note2 textarea');
+			notes += zoteroNote2.value.replace(/\t/g, '　').replace(/\n/g, '<br/>') + '</p>';
+			
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroNote3Enabled = doc.querySelector('#zotero-note3-enabled input');
+		if (zoteroNote3Enabled.checked) {
+			let note3 = doc.getElementById('zotero-note3');
+			let notes = '<p><strong>豆瓣短评</strong></p>\n' + note3.outerHTML;
+			item.notes.push({
+				note: notes
+			});
+		}
+		
+		let zoteroTagsEnabled = doc.querySelector('#zotero-tags-enabled input');
+		if (zoteroTagsEnabled.checked) {
+			var tags = doc.querySelectorAll('#zotero-tags .tag');
+			for (let tag of tags) {
+				item.tags.push({
+					tag: tag.innerText.trim()
+				});
+			}
+		}
+		
+		let zoteroAttachment1Enabled = doc.querySelector('#zotero-attachment1-enabled input');
+		if (zoteroAttachment1Enabled && zoteroAttachment1Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment1');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
+		}
+		let zoteroAttachment2Enabled = doc.querySelector('#zotero-attachment2-enabled input');
+		if (zoteroAttachment2Enabled && zoteroAttachment2Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment2');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
+		}
+		let zoteroAttachment3Enabled = doc.querySelector('#zotero-attachment3-enabled input');
+		if (zoteroAttachment3Enabled && zoteroAttachment3Enabled.checked) {
+			var a = doc.querySelector('#zotero-attachment3');
+			item.attachments.push({
+				title: a.textContent,
+				url: a.href,
+				linkMode: a.getAttribute('linkMode'),
+				mimeType: a.getAttribute('mimeType')
+			});
+		}
+	} else {
+		item.url = url;
+		item.title = text(doc, '#title');
+		item.publisher = text(doc, '#publisher');
+		item.date = text(doc, '#date');
+		item.ISBN = text(doc, '#isbn');
+		item.numPages = text(doc, '#pages');
+		item.archiveLocation = text(doc, '#clcs a:last-child span:nth-child(2)');
+		item.archive = text(doc, '#subjects a:last-child').replace(/\D/g, '');
+		item.abstractNote = text(doc, '#abstractNote');
+		item.edition = item.title.replace(/[^(第\d+版)]/g, '').replace(/\(|\)|第|版/g, '');
+		
+		var authors = doc.querySelectorAll('#author a');
+		for (let author of authors) {
+			item.creators.push({
+				lastName: author.innerText,
+				creatorType: 'author',
+				fieldMode: 1
+			});
+		}
+		var translators = doc.querySelectorAll('#translator a');
+		for (let translator of translators) {
+			item.creators.push({
+				lastName: translator.innerText,
+				creatorType: 'translator',
+				fieldMode: 1
+			});
+		}
+		var tags = doc.querySelectorAll('#tags a span');
+		for (let tag of tags) {
+			item.tags.push(tag.innerText);
+		}
+		item.extra = text(doc, '#doubanscore .score-value') + '/' + (text(doc, '#doubanscore .comments-value')||'').replace(/\(|\)|[\u4e00-\u9fa5]/g, '') + '|' + text(doc, '#score')
+		
+		let cover_url = attr(doc, '#cover', 'src');
+		let u = getBookCataloguesAPIURL(getDoi(url));
+		Zotero.Utilities.HTTP.doGet(u, function (retString) {
+			let ret = JSON.parse(retString);
+			if (ret.resultcode !== 1) {
+				return;
+			}
+			let notes = '<p><strong>目录</strong></p>\n<p><img src="' + cover_url + '" alt="" style="max-width: 135px; max-height: 200px;" /></p><p>';
+			let maxtier = 1;
+			for (let content of ret.data) {
+				maxtier = Math.max(content.tier, maxtier);
+			}
+			for (let json of ret.data) {
+				notes += '　'.repeat(json.tier - 1) + (maxtier > 1 && json.tier === 1 ? '<b>' : '') +  json.content + (maxtier > 1 && json.tier === 1 ? '</b>' : '') + '<br >';
+			}
+			notes += '</p>';
+			
+			item.notes.push({
+				note: notes
+			});
 		});
-	});
+	}
 	
 	item.complete();
 }
