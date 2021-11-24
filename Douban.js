@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-11-17 10:15:46"
+	"lastUpdated": "2021-11-24 06:50:49"
 }
 
 /*
@@ -246,8 +246,7 @@ function scrape(doc, url) {
 	var itemType = detectType(doc);
 	var item = new Zotero.Item(itemType);
 	var zoteroCapture = doc.getElementById('zotero-capture');
-	Zotero.debug(zoteroCapture.getAttribute('visibled'));
-	if (zoteroCapture.getAttribute('visibled')) {
+	if (zoteroCapture && zoteroCapture.getAttribute('visibled')) {
 		item.title = value(doc, '#zotero-title');
 		var creators = doc.querySelectorAll('.zotero-class-creators');
 		for (let creator of creators) {
