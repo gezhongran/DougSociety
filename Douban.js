@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-11-24 06:50:49"
+	"lastUpdated": "2021-12-27 09:17:54"
 }
 
 /*
@@ -93,8 +93,20 @@ function getResults1(rows, funcTitle, funcRating, funcRatingPeople, filter) {
 		if (filter && !filter(row)) continue;
 
 		let year
-		if (row.querySelector('div.abstract').textContent.match(/出版年:(.*)/)) {
-			year = row.querySelector('div.abstract').textContent.match(/出版年:(.*)/)[1].trim()
+		let abstract = row.querySelector('div.abstract')
+		if (abstract) {
+			if (abstract.textContent.match(/出版年:(.*)/)) {
+				year = abstract.textContent.match(/出版年:(.*)/)[1].trim()
+			}
+		} else {
+			let pub = row.querySelector('div.pub')
+			if (pub) {
+				let match = pub.textContent.match(/(\d{4}-\d{1,2}-?\d{0,2})/)
+				if (match) {
+					year = match[1]
+				}
+			}
+		
 		}
 		titleTag = funcTitle(row);
 		let href = titleTag.href;
@@ -116,7 +128,7 @@ function getResults1(rows, funcTitle, funcRating, funcRatingPeople, filter) {
 				ratingPeople = 0;
 			}
 		}
-		title = '[' + rating + '/' + ratingPeople + '] ' + title + '(' + year + ')';
+		title = '[' + rating + '/' + ratingPeople + '] ' + title + (year ? '(' + year + ')' : '');
 		items[href] = title;
 	}
 

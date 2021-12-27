@@ -111,6 +111,10 @@
 
 ### changelog:
 
+- 2021.12.27 修复Douban.js在标签下批量抓取失败问题。
+
+- 2021.12.14 Zotcard1.9.1发布添加卡片打印功能
+
 - 2021.11.17 更新Douban.js多选书籍时在书籍后面显示出版日期。uread.js修复了在搜索和优书的批量抓取。zoturead v1.3.0 发布,合并zotupdate插件功能
 
 - 2021.09.29 更新Jd.js, Douban.js,Dangdang.js,Superlib.js,配合[豆瓣中图分类法](https://greasyfork.org/zh-CN/scripts/408682)插件，直接抓中图分类号和学科分类号。
