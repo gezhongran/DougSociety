@@ -2,14 +2,14 @@
 	"translatorID": "ec98c7f1-1f76-43d1-a5fd-fc36428fba58",
 	"label": "Dangdang",
 	"creator": "018<lyb018@gmail.com>",
-	"target": "^http?://(product|search)\\.dangdang\\.com/",
+	"target": "^https?://(product|search)\\.dangdang\\.com/",
 	"minVersion": "3.0",
 	"maxVersion": "",
 	"priority": 100,
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-09-30 03:20:08"
+	"lastUpdated": "2022-01-24 06:22:02"
 }
 
 /*
