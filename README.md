@@ -111,6 +111,8 @@
 
 ### changelog:
 
+- 2022.02.09 更新Douban.js，添加对[豆瓣游戏](https://www.douban.com/game/explore)页面的支持，包含批量和单抓。
+
 - 2021.12.27 修复Douban.js在标签下批量抓取失败问题。
 
 - 2021.12.14 Zotcard1.9.1发布添加卡片打印功能

@@ -2,14 +2,14 @@
 	"translatorID": "d0a65ab7-b10c-4801-a906-05505fecc749",
 	"label": "Douban",
 	"creator": "Ace Strong<acestrong@gmail.com>, Felix Hui",
-	"target": "https?://(www|book|movie)\\.douban\\.com/(subject|doulist|tag|explore|chart|tv|top|series|typerank)",
+	"target": "https?://(www|book|movie)\\.douban\\.com/(subject|doulist|tag|explore|chart|tv|top|series|typerank|game)",
 	"minVersion": "3.0",
 	"maxVersion": "",
 	"priority": 100,
 	"inRepository": true,
 	"translatorType": 4,
 	"browserSupport": "gcsibv",
-	"lastUpdated": "2021-12-27 09:17:54"
+	"lastUpdated": "2022-02-08 16:26:40"
 }
 
 /*
@@ -47,6 +47,7 @@ function value(docOrElem, selector, index) {
 var TYPE_MAP = {
 	book: 'book',
 	movie: 'film',
+	game: 'artwork',
 	tv: 'tvBroadcast'
 };
 
@@ -71,7 +72,7 @@ function doTag(item, data) {
 	}
 }
 
-function detectType(doc) {
+function detectType(doc, url) {
 	var element = Object.values(doc.scripts).find(element => element.textContent.includes('answerObj'));
 	if (element) {
 		var pattern = /TYPE: '[a-zA-Z]+'/;
@@ -81,6 +82,8 @@ function detectType(doc) {
 				return TYPE_MAP[type];
 			}
 		}
+	} else if (url.includes('/game/')) {
+		return TYPE_MAP['game'];
 	}
 	return false;
 }
@@ -155,9 +158,44 @@ function getResults2(rows, titleSelector, ratingSelector) {
 	return found ? items : false;
 }
 
+function getResults3(rows, funcTitle, funcRating, funcRatingPeople) {
+	if (!rows || rows.length <= 0) return false;
+
+	var found = false, items = {}, titleTag;
+	for (let row of rows) {
+		titleTag = funcTitle(row);
+		let href = titleTag.href;
+		let title = ZU.trimInternal(titleTag.textContent);
+		if (!href || !title) continue;
+
+		found = true;
+		var rating;
+		if (funcRating) {
+			rating = funcRating(row);
+			if (!rating || rating.toString().trim().length <= 0) {
+				rating = '0.0';
+			}
+		}
+		var ratingPeople;
+		if (funcRatingPeople) {
+			ratingPeople = funcRatingPeople(row);
+			if (!ratingPeople || ratingPeople.toString().trim().length <= 0) {
+				ratingPeople = 0;
+			}
+		}
+		title = '[' + rating + '/' + ratingPeople + '] ' + title;
+		items[href] = title;
+	}
+
+	return found ? items : false;
+}
+
 function detectWeb(doc, url) {
 	if (url.includes('/subject/')) {
-		return detectType(doc);
+		return detectType(doc, url);
+	}
+	else if (url.includes('/game/')) {
+		return url.includes('/game/explore') ? 'multiple' : TYPE_MAP['game'];
 	}
 	else {
 		var element = doc.querySelector('div[class*="list-wp"]');
@@ -195,6 +233,16 @@ function getSearchResults(doc, url, checkOnly) {
 			return text(row, 'div.bd div.star span.rating_num');
 		}, (row) => {
 			return (text(row, 'div.bd div.star span.rating_num+span+span') || '').match(/\d+/);
+		});
+	}
+	else if (url.includes('www.douban.com/game/explore')) {
+		rows = doc.querySelectorAll('.game-list ul li');
+		items = getResults3(rows, (row) => {
+			return row.querySelector('.game-info .game-title a');
+		}, (row) => {
+			return text(row, '.game-ratings strong');
+		}, (row) => {
+			return (ZU.xpath(row, './/*[@class="game-ratings"]/text()')[0].textContent || '').match(/\d+/);
 		});
 	}
 	else if (url.includes('movie.douban.com/typerank')) {
@@ -255,7 +303,7 @@ function doWeb(doc, url) {
 }
 
 function scrape(doc, url) {
-	var itemType = detectType(doc);
+	var itemType = detectType(doc, url);
 	var item = new Zotero.Item(itemType);
 	var zoteroCapture = doc.getElementById('zotero-capture');
 	if (zoteroCapture && zoteroCapture.getAttribute('visibled')) {
@@ -361,6 +409,63 @@ function scrape(doc, url) {
 				linkMode: a.getAttribute('linkMode'),
 				mimeType: a.getAttribute('mimeType')
 			});
+		}
+	} else if (url.includes('/game/')) {
+		// https://www.douban.com/game/26954652/
+		item.url = url;
+		item.title = text(doc, '#content h1');
+	
+		var infos = text(doc, '#content  div.item-subject-info dl');
+		infos = infos.replace(/^[\xA0\s]+/gm, '')
+			.replace(/[\xA0\s]+$/gm, '')
+			.replace(/\n+/g, '\n')
+			.replace(/:\n+/g, ': ')
+			.replace(/]\n/g, ']')
+			.replace(/】\n/g, '】')
+			.replace(/\n\/\n/g, '/');
+		for (var section of Object.values(infos.split('\n'))) {
+			if (!section || section.trim().length <= 0) continue;
+	
+			let index = section.indexOf(':');
+			if (index <= -1) continue;
+	
+			let key = section.substr(0, index).trim();
+			let value = section.substr(index + 1).trim();
+			switch (key) {
+				// book
+				case "开发商":
+					doPerson(item, value, "author");
+					break;
+				case "平台":
+					item.artworkMedium = value;
+					break;
+				case "别名":
+					item.shortTitle = value;
+					break;
+				case "发行商":
+					item.rights = value;
+					break;
+				case "发行日期":
+					item.date = value;
+					break;
+				case "类型":
+					item.archive = value;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		item.abstractNote = text(doc, '#link-report p');
+	
+		// 评分 & 评价人数
+		var rating = text(doc, 'strong[property*="v:average"]');
+		if (rating && (rating = rating.trim()).length >= 1) {
+			var ratingPeople = text(doc, 'div.rating_sum a.rating_people span[property="v:votes"]');
+			if (!ratingPeople || ratingPeople.toString().trim().length <= 0) {
+				ratingPeople = 0;
+			}
+			item.extra = rating + "/" + ratingPeople;
 		}
 	} else {
 
@@ -583,9 +688,7 @@ function getIDFromURL(url) {
 	if (!id) return '';
 
 	return id[0].replace(/subject|\//g, '');
-}
-
-/** BEGIN TEST CASES **/
+}/** BEGIN TEST CASES **/
 var testCases = [
 	{
 		"type": "web",
@@ -886,6 +989,41 @@ var testCases = [
 						"tag": "奇幻"
 					}
 				],
+				"notes": [],
+				"seeAlso": []
+			}
+		]
+	},
+	{
+		"type": "web",
+		"url": "https://www.douban.com/game/26954660/",
+		"items": [
+			{
+				"itemType": "artwork",
+				"title": "马力欧卡丁车8 豪华版 マリオカート8 デラックス",
+				"creators": [
+					{
+						"lastName": "Nintendo EAD",
+						"creatorType": "author",
+						"fieldMode": 1
+					},
+					{
+						"lastName": "Bandai Namco Entertainment",
+						"creatorType": "author",
+						"fieldMode": 1
+					}
+				],
+				"date": "2017-04-28",
+				"abstractNote": "《马里奥赛车8 豪华版》。该版本是马里奥赛车8的加强版，会包括原作的追加下载内容以及一些新角色，新模式和新的对战赛道地图。本作于2017年4月28日在任天堂Switch推出。",
+				"archive": "游戏/竞速",
+				"artworkMedium": "Nintendo Switch",
+				"extra": "8.9/6348",
+				"libraryCatalog": "Douban",
+				"rights": "Nintendo",
+				"shortTitle": "马里奥赛车8 DX / Mario Kart 8 Deluxe",
+				"url": "https://www.douban.com/game/26954660/",
+				"attachments": [],
+				"tags": [],
 				"notes": [],
 				"seeAlso": []
 			}
