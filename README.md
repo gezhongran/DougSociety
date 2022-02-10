@@ -75,33 +75,7 @@
 | 9    | [个人理财、投资、金融（教材for目录对比）](https://www.douban.com/doulist/135952740/) |
 | 10   | [职业生涯管理](https://www.douban.com/doulist/131340410/)    |
 
-6. **优质信源清单**
 
-| 类别     | 网址                                                         |
-| -------- | ------------------------------------------------------------ |
-| 搜索引擎 | [Magi](https://magi.com/)                                    |
-| 集合搜索 | [一个开始](https://aur.one/)                                 |
-| 导航网站 | [龙轩导航-做个有用的导航](http://ilxdh.com/)                 |
-| RSS      | [公众号-瓦斯阅读（RSS订阅）](https://qnmlgb.tech/)           |
-| RSS      | [公众号-WeRSS](https://werss.app/)                           |
-| 关键词   | [XLore](https://xlore.org/)                                  |
-| 关键词   | [术语在线](http://termonline.cn/index.htm)                   |
-| 关键词   | [国家工程技术数字图书馆](https://netl.istic.ac.cn/site/home)-汉语主题词表 |
-| 关键词   | [微词云](https://www.weiciyun.com/)                          |
-| 论文下载 | [国家哲学社会科学文献中心](http://www.ncpssd.org/)           |
-| 论文下载 | [谷歌学术镜像_Google学术搜索导航](https://ac.scmor.com/)     |
-| 论文下载 | [Sci-Hub](https://sci-hub.se/)                               |
-| 论文下载 | [You are Crossref（DOI）](https://www.crossref.org/)         |
-| 论文下载 | [中国国家图书馆](http://read.nlc.cn/outRes/outResList?type=%E5%B7%A5%E5%85%B7%E4%B9%A6&urlType=extranet) |
-| 论文下载 | [浙江省图书馆](https://www.zjlib.cn/)                        |
-| 论文下载 | [广西壮族自治区图书馆](http://www.gxlib.org.cn/)             |
-| 免费影视 | [电影狗](http://www.dianyinggou.com/)                        |
-| 免费影视 | [茶杯狐 ](https://www.cupfox.com/)                           |
-| 图书     | [全国图书馆参考咨询联盟](http://www.ucdrs.superlib.net/)     |
-| 图书     | [WorldCat.org:世界上最大的图书馆目录](https://www.worldcat.org/) |
-| 网盘搜索 | [凌风云 ](https://www.lingfengyun.com/)                      |
-| 垂直搜索 | [豆列专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:0u2qhakyyb3) |
-| 垂直搜索 | [B站专搜-需要番茄上网](https://cse.google.com/cse?cx=009753591775599838256:cajuod9wgd6) |
 ---
 **欢迎关注公众号：**
 
@@ -111,7 +85,7 @@
 
 ### changelog:
 
-- 2022.02.09 更新Douban.js，添加对[豆瓣游戏](https://www.douban.com/game/explore)页面的支持，包含批量和单抓。
+- 2022.02.09 更新Douban.js，添加对[豆瓣游戏](https://www.douban.com/game/explore)页面的支持，包含批量和单抓。删除信息源网站连接。
 
 - 2021.12.27 修复Douban.js在标签下批量抓取失败问题。
 
