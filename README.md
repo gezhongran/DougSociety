@@ -85,6 +85,8 @@
 
 ### changelog:
 
+- 2022.02.14 更新Zoturead适配Zotero 6.0。
+
 - 2022.02.09 更新Douban.js，添加对[豆瓣游戏](https://www.douban.com/game/explore)页面的支持，包含批量和单抓。删除信息源网站连接。
 
 - 2021.12.27 修复Douban.js在标签下批量抓取失败问题。
